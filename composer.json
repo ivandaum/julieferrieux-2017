@@ -1,0 +1,19 @@
+{
+  "name": "ivandaum/florianmoreau-2017",
+  "description": "Florian Moreau's portfolio",
+  "authors": [
+    {
+      "name": "Ivan Daum",
+      "email": "ivan.daum@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "files": [
+      "config/constants.php"
+    ],
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}

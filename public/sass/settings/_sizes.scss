@@ -1,0 +1,20 @@
+$desktop: min-width 1001px;
+$tablet: 650px 1000px;
+$phone: max-width 649px;
+$phone-small: max-width 450px;
+$small-desktop: max-width 1155px;
+
+@include breakpoint($desktop) {
+  .hidden-desktop {
+    display: none !important;
+  }
+}
+@include breakpoint($phone) {
+  .hidden-phone {display:none !important;}
+  .visible-phone {display:block !important;}
+}
+
+@include breakpoint($tablet) {
+  .hidden-tablet {  display:none !important;  }
+  .visible-tablet {display:block !important;}
+}

@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "breakpoint": "^0.1.6",
+    "breakpoint-sass": "^2.7.1",
+    "gsap": "^1.19.1",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "^3.0.7",
+    "node-sass": "*"
+  },
+  "name": "florianmoreau-2017",
+  "version": "1.0.0",
+  "description": "Florian Moreau's portfolio",
+  "main": "index.php",
+  "repository": "https://github.com/ivandaum/florianmoreau-2017",
+  "author": "Ivan Daum",
+  "license": "MIT"
+}

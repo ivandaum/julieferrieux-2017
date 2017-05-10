@@ -1,0 +1,50 @@
+$font-directory:'/wp-content/themes/julieferrieux-2017/public/fonts/';
+$roboto-directory: $font-directory + 'roboto/';
+$neo-directory: $font-directory + 'noe/';
+
+$primaryFont: 'Noe Display Bold', arial, sans-serif;
+$secondFont: 'Roboto', arial, sans-serif;
+
+@font-face {
+  font-family: 'Noe Display Bold';
+  src: url($neo-directory + 'NoeDisplay-Bold.eot');
+  src: url($neo-directory + 'NoeDisplay-Bold.woff2') format('woff2'),
+  url($neo-directory + 'NoeDisplay-Bold.woff') format('woff'),
+  url($neo-directory + 'NoeDisplay-Bold.ttf') format('truetype'),
+  url($neo-directory + 'NoeDisplay-Bold.svg#NoeDisplay-Bold') format('svg'),
+  url($neo-directory + 'NoeDisplay-Bold.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'Roboto';
+  src: url($roboto-directory + 'Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url($roboto-directory + 'Roboto-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url($roboto-directory + 'Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url($roboto-directory + 'Roboto-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
