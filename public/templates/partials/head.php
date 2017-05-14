@@ -23,3 +23,5 @@
 </head>
 <?php global $bodyClass ?>
 <body class="<?= $bodyClass ?>">
+
+<a href="#" class="about-section-button text-uppercase">Contact</a>

@@ -13,15 +13,15 @@ class ProjectFormator
     {
 
         $formated = [];
-        foreach($array as $ar) {
-            $formated[] = self::formatOne($ar);
+        foreach($array as $key => $ar) {
+            $formated[] = self::formatOne($ar,$key);
         }
 
         return $formated;
     }
 
 
-    static public function formatOne($project)
+    static public function formatOne($project, $key = null)
     {
 
         $formatedProject = array();
@@ -40,6 +40,7 @@ class ProjectFormator
 
 	    $formatedProject['next_post'] = get_next_post( true );
 
+	    if(is_int($key)) $formatedProject['number'] = $key+1;
 
 	    $tags = wp_get_post_tags($project->ID);
         foreach ($tags as $tag) {

@@ -1,14 +1,13 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
 var cleanCSS = require('gulp-clean-css');
+var babel = require('gulp-babel');
 
 DEST_DIR = './public/compressed/';
 JS_FILE = [
-    './node_modules/jquery/dist/jquery.js',
-    './node_modules/gsap/src/uncompressed/*.js',
     '!./node_modules/gsap/src/uncompressed/jquery.gsap.js',
+    './node_modules/gsap/src/uncompressed/*.js',
     './public/js/functions.js',
     './public/js/Class/*.js',
     './public/js/main.js'
@@ -20,9 +19,12 @@ OTHER_SASS = [
     'node_modules/compass-mixins/lib/'
 ];
 
+function onError(onError) {
+    console.log(onError);
+}
 gulp.task('compile:js', function () {
     gulp.src(JS_FILE)
-        .pipe(uglify())// before compilation, preserve order
+        .pipe(babel())
         .pipe(concat('/main.min.js'))
         .pipe(gulp.dest(DEST_DIR));
 });
