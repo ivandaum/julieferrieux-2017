@@ -23,7 +23,6 @@ body.noselect * {
   opacity:0;
   position:absolute;
   z-index:10;
-  @include transition-css(opacity);
 
   &.active {
     z-index:20;
@@ -68,18 +67,6 @@ body.noselect * {
     bottom: 60px;
     z-index:2;
   }
-
-  .image-preview {
-    position:absolute;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    z-index:1;
-  }
 }
 
 .projects-menu {
@@ -119,7 +106,7 @@ body.noselect * {
     }
 
     &.active .project-number {
-      display:block;
+      opacity:1;
     }
 
     span {
@@ -135,6 +122,7 @@ body.noselect * {
       right:0;
       z-index:10;
       margin:auto;
+      @include transition-css(all);
     }
 
     .project-number {
@@ -143,15 +131,44 @@ body.noselect * {
       font-size:11px;
       line-height:14px;
       font-weight:700;
-      display:none;
+      display:block;
       letter-spacing:3px;
       text-align:right;
       margin-top:-1px;
-
+      opacity:0;
+      pointer-events: none;
+      @include transition-css(all);
     }
 
     &:last-child {
       margin-bottom:0;
     }
+  }
+}
+
+.project-image {
+  @include transition-css(height,0.5s);
+  position:absolute;
+  overflow:hidden;
+  will-change:height;
+
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+
+  z-index:1;
+
+  .image-preview {
+    width:100vw;
+    height:100vh;
+    position:absolute;
+    left:0;
+    top:0;
+    display:block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index:1;
   }
 }
