@@ -7,5 +7,8 @@ console.log('');
 
 
 new Loader(function() {
-	new HomeSwitcher();
+
+	setTimeout(function() {
+		new HomeSwitcher();
+	},300);
 });

@@ -20,7 +20,6 @@ body.noselect * {
 
 .project {
   pointer-events: none;
-  opacity:0;
   position:absolute;
   z-index:10;
 
@@ -34,6 +33,10 @@ body.noselect * {
     font-size: 65px;
     line-height: 65px;
     span {
+      height:65px;
+      width:100%;
+      overflow:hidden;
+      padding-top:65px;
       display: block;
     }
   }

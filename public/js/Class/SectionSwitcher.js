@@ -25,7 +25,6 @@ class HomeSwitcher {
 	}
 
 	switchSection(e) {
-		var _this = this;
 		this.direction = e.deltaY < 0 ? 'previous' : 'next';
 
 		if(this.flagSwitching) return;
@@ -56,6 +55,7 @@ class HomeSwitcher {
 
 		return {
 			image: document.querySelector('.project-image-' + domNumber),
+			realImage: document.querySelector('.project-image-' + domNumber + ' .image-preview'),
 			menu: document.querySelector('.projects-menu-'+ domNumber),
 			title: document.querySelector('.project-'+ domNumber)
 		}
@@ -66,34 +66,31 @@ class HomeSwitcher {
 		var current = this.getSectionElements(c);
 		var next = this.getSectionElements(n);
 
-		var timeline = new TimelineMax();
-		timeline
+		c++;
+		n++;
 
-			.call(function() {
-				new TweenMax.fromTo(current.image,0.5,
-					{top:'0%',bottom:'0%',Ease:Quart.easeOut},
-					{top:'0%',bottom:'100%',Ease:Quart.easeOut}
-				);
-				// new TweenMax.fromTo(document.querySelectorAll('.project-image .image-preview')[c],0.5,
-				// 	{top:'0%',Ease:Quart.easeOut},
-				// 	{top:'-100%' ,Ease:Quart.easeOut}
-				// );
-			})
-			.set(current.image,{zIndex:1})
-			.set(next.image,{zIndex:5})
-			.call(function() {
-				new TweenMax.fromTo(next.image,0.5,
-					{top:'100%', bottom:'0%',Ease:Quart.easeOut},
-					{top:'0%' ,bottom:'0%',Ease:Quart.easeOut}
-				);
-				new TweenMax.fromTo(document.querySelectorAll('.project-image .image-preview')[n],0.5,
-					{top:'-100%',Ease:Quart.easeOut},
-					{top:'0%' ,Ease:Quart.easeOut}
-				);
-			});
+		if(_this.direction == 'previous') {
+			new TweenMax.set(current.image,{zIndex:2});
+			new TweenMax.set(next.image,{zIndex:5});
+
+			_this.slideUp(next,n);
+
+		} else {
+			new TweenMax.set(next.image,{zIndex:2,top:'0%',bottom:'0%'});
+			new TweenMax.set(current.image,{zIndex:5});
+			new TweenMax.set(next.realImage,{zIndex:5,top:'0'});
+
+			_this.slideDown(current,c);
+
+		}
+
+		_this.slideUpText(current,c);
+		_this.slideDownText(next,n);
 
 		setTimeout(function() {
 			_this.flagSwitching = false;
+			new TweenMax.set('.project-image',{zIndex:1});
+			new TweenMax.set(next.image,{zIndex:5});
 		},1500);
 	}
 
@@ -101,19 +98,52 @@ class HomeSwitcher {
 
 		var next = this.getSectionElements(n);
 		new TweenMax.set('.project-image',{zIndex:1,top:'100%',bottom:'0%'});
-		new TweenMax.fromTo(next.image,0.5,
-			{top:'100%', bottom:'0%',Ease:Quart.easeOut},
-			{top:'0%' ,bottom:'0%',Ease:Quart.easeOut}
+
+		n++;
+
+		this.slideDownText(next,n);
+		this.slideUp(next,n);
+	}
+
+	slideUp(el,number) {
+		new TweenMax.fromTo(el.realImage,0.7,
+			{top:'-100vh',ease:Quart.easeInOut},
+			{top:'0' ,ease:Quart.easeInOut}
 		);
-		new TweenMax.fromTo(document.querySelectorAll('.project-image .image-preview')[n],0.5,
-			{top:'-100%',Ease:Quart.easeOut},
-			{top:'0%' ,Ease:Quart.easeOut}
+
+		new TweenMax.fromTo(el.image,0.7,
+			{top:'100%', bottom:'0%',ease:Quart.easeInOut},
+			{top:'0%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
+	}
+	slideDown(el,number) {
+		new TweenMax.fromTo(el.realImage,0.7,
+			{top:'0',ease:Quart.easeInOut},
+			{top:'-100vh' ,ease:Quart.easeInOut}
+		);
+
+		new TweenMax.fromTo(el.image,0.7,
+			{top:'0', bottom:'0%',ease:Quart.easeInOut},
+			{top:'100%' ,bottom:'0%',ease:Quart.easeInOut}
+		);
+	}
+
+	slideDownText(el,n) {
+		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
+			{paddingTop:'65px',ease:Quart.easeInOut},
+			{paddingTop:'0',ease:Quart.easeInOut}
+		,0.1);
+	}
+	slideUpText(el,n) {
+		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
+			{paddingTop:'0',ease:Quart.easeInOut},
+			{paddingTop:'65px',ease:Quart.easeInOut}
+		,0.1);
 	}
 
 	animatePlan(e) {
 		return;
-		
+
 		var els = this.getSectionElements(this.activeSection);
 
 		var center = {

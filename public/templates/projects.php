@@ -12,7 +12,7 @@
 		<?php foreach ($projects as $project): ?>
 			<div class="project container project-<?= $project['number'] ?>" data-number="<?= $project['number'] ?>" style="color:<?= $project['color'] ?>">
 					<div class="project-content">
-						<h2 class="project-title"><?= explodeTitle($project['title']) ?></h2>
+						<h2 class="project-title project-title-<?= $project['number'] ?>"><?= explodeTitle($project['title']) ?></h2>
 						<div style="background-color:<?= $project['color'] ?>" class="project-border"></div>
 						<div class="project-tags text-uppercase">
 							<?php foreach ($project['tags'] as $tag): ?>
