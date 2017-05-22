@@ -25,7 +25,6 @@ body.noselect * {
 
   &.active {
     z-index:20;
-    opacity: 1;
     pointer-events: auto;
   }
 
@@ -68,7 +67,7 @@ body.noselect * {
     position: absolute;
     left: 150px;
     bottom: 60px;
-    z-index:2;
+    z-index:20;
   }
 }
 

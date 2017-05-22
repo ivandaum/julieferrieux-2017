@@ -2,15 +2,17 @@
 
 	<ul class="projects-menu">
 		<?php foreach($projects as $project): ?>
-			<li class="project-menu-<?= $project['number'] ?>">
+			<li class="project-menu-<?= $project['number'] ?> <?php if($project['number'] == 1):?> active<?php endif; ?>">
 				<span></span>
-				<div class="project-number" style="color:<?= $project['color'] ?>"><?php if($project['number'] < 10): ?>0<?php endif; ?><?= $project['number'] ?></div>
+				<div class="project-number project-number-<?= $project['number'] ?>" style="color:<?= $project['color'] ?>">
+					<?php if($project['number'] < 10): ?>0<?php endif; ?><?= $project['number'] ?>
+				</div>
 			</li>
 		<?php endforeach; ?>
 	</ul>
 	<div class="projects">
 		<?php foreach ($projects as $project): ?>
-			<div class="project container project-<?= $project['number'] ?>" data-number="<?= $project['number'] ?>" style="color:<?= $project['color'] ?>">
+			<div class="project container project-<?= $project['number'] ?> <?php if($project['number'] == 1):?> active<?php endif; ?>" data-number="<?= $project['number'] ?>" style="color:<?= $project['color'] ?>">
 					<div class="project-content">
 						<h2 class="project-title project-title-<?= $project['number'] ?>"><?= explodeTitle($project['title']) ?></h2>
 						<div style="background-color:<?= $project['color'] ?>" class="project-border"></div>

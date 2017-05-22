@@ -25,6 +25,7 @@ class HomeSwitcher {
 	}
 
 	switchSection(e) {
+
 		this.direction = e.deltaY < 0 ? 'previous' : 'next';
 
 		if(this.flagSwitching) return;
@@ -46,8 +47,15 @@ class HomeSwitcher {
 			}
 		}
 
+		var n = nextSection+1;
+		var c = this.activeSection + 1;
+		addClass(document.querySelector('.project-menu-' + n),this.className.active);
+		removeClass(document.querySelector('.project-menu-' + c),this.className.active);
 		this.animate(this.activeSection,nextSection);
 		this.activeSection = nextSection;
+
+		removeClass(document.querySelector('.project-' + c),this.className.active);
+		addClass(document.querySelector('.project-' + n),this.className.active);
 	}
 
 	getSectionElements(number) {
@@ -129,16 +137,16 @@ class HomeSwitcher {
 	}
 
 	slideDownText(el,n) {
-		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
+		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.3,
 			{paddingTop:'65px',ease:Quart.easeInOut},
 			{paddingTop:'0',ease:Quart.easeInOut}
-		,0.1);
+		,0.3);
 	}
 	slideUpText(el,n) {
-		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
+		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.3,
 			{paddingTop:'0',ease:Quart.easeInOut},
 			{paddingTop:'65px',ease:Quart.easeInOut}
-		,0.1);
+		,0.3);
 	}
 
 	animatePlan(e) {
@@ -164,8 +172,8 @@ class HomeSwitcher {
 		m.x /= center.w;
 		m.y /= center.h;
 
-		m.x *= 5;
-		m.y *= 5;
+		// m.x *= 5;
+		// m.y *= 5;
 
 		els.image.style.transform = 'skewx('+m.x+'deg) skewy('+m.y+'deg)'; //;
 	}
