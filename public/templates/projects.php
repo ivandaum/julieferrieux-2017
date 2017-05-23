@@ -16,7 +16,7 @@
 					<div class="project-content">
 						<h2 class="project-title project-title-<?= $project['number'] ?>"><?= explodeTitle($project['title']) ?></h2>
 						<div style="background-color:<?= $project['color'] ?>" class="project-border"></div>
-						<div class="project-tags text-uppercase">
+						<div class="project-tags project-tags-<?= $project['number'] ?> text-uppercase">
 							<?php foreach ($project['tags'] as $tag): ?>
 								<p><?= $tag ?></p>
 							<?php endforeach; ?>

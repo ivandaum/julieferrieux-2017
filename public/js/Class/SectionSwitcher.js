@@ -9,18 +9,17 @@ class HomeSwitcher {
 		};
 
 		this.sections = document.querySelectorAll('.'+this.className.project);
-		this.flagSwitching = false;
+		this.preload(function() {
+			document.querySelector('.loader').style.opacity = 0;
+			_this.flagSwitching = false;
 
-		document.addEventListener('mousewheel', function(e) {
-			_this.switchSection(e);
+			document.addEventListener('mousewheel', function(e) {
+				_this.switchSection(e);
+			});
+
+			_this.activeSection = 0;
+			_this.showFirst(_this.activeSection);
 		});
-
-		document.addEventListener('mousemove', function(e) {
-			_this.animatePlan(e);
-		});
-
-		this.activeSection = 0;
-		this.showFirst(this.activeSection);
 
 	}
 
@@ -47,25 +46,15 @@ class HomeSwitcher {
 			}
 		}
 
-		var n = nextSection+1;
-		var c = this.activeSection + 1;
-		addClass(document.querySelector('.project-menu-' + n),this.className.active);
-		removeClass(document.querySelector('.project-menu-' + c),this.className.active);
 		this.animate(this.activeSection,nextSection);
 		this.activeSection = nextSection;
-
-		removeClass(document.querySelector('.project-' + c),this.className.active);
-		addClass(document.querySelector('.project-' + n),this.className.active);
 	}
 
 	getSectionElements(number) {
 		var domNumber = number + 1;
 
 		return {
-			image: document.querySelector('.project-image-' + domNumber),
-			realImage: document.querySelector('.project-image-' + domNumber + ' .image-preview'),
-			menu: document.querySelector('.projects-menu-'+ domNumber),
-			title: document.querySelector('.project-'+ domNumber)
+			image: document.querySelector('.project-image-' + domNumber)
 		}
 	}
 
@@ -77,104 +66,93 @@ class HomeSwitcher {
 		c++;
 		n++;
 
+		addClass(document.querySelector('.project-menu-' + n),this.className.active);
+		removeClass(document.querySelector('.project-menu-' + c),this.className.active);
+
 		if(_this.direction == 'previous') {
+			new TweenMax.set(next.image,{zIndex:2,top:'0%',bottom:'0%'});
+			new TweenMax.set(current.image,{zIndex:5});
+
+			_this.slideDown(current);
+		} else {
 			new TweenMax.set(current.image,{zIndex:2});
 			new TweenMax.set(next.image,{zIndex:5});
 
-			_this.slideUp(next,n);
-
-		} else {
-			new TweenMax.set(next.image,{zIndex:2,top:'0%',bottom:'0%'});
-			new TweenMax.set(current.image,{zIndex:5});
-			new TweenMax.set(next.realImage,{zIndex:5,top:'0'});
-
-			_this.slideDown(current,c);
-
+			_this.slideUp(next);
 		}
 
-		_this.slideUpText(current,c);
-		_this.slideDownText(next,n);
+		this.slideUpText(c);
+		this.slideDownText(n);
+		this.slideTagsUp(n);
+		this.slideTagsDown(c);
 
 		setTimeout(function() {
 			_this.flagSwitching = false;
 			new TweenMax.set('.project-image',{zIndex:1});
 			new TweenMax.set(next.image,{zIndex:5});
 		},1500);
+
+		removeClass(document.querySelector('.project-' + c),this.className.active);
+		addClass(document.querySelector('.project-' + n),this.className.active);
 	}
 
 	showFirst(n) {
-
 		var next = this.getSectionElements(n);
-		new TweenMax.set('.project-image',{zIndex:1,top:'100%',bottom:'0%'});
 
 		n++;
+		new TweenMax.set(next.image,{zIndex:5});
 
-		this.slideDownText(next,n);
-		this.slideUp(next,n);
+		this.slideDownText(n);
+		this.slideUp(next);
+		this.slideTagsUp(n);
 	}
 
-	slideUp(el,number) {
-		new TweenMax.fromTo(el.realImage,0.7,
-			{top:'-100vh',ease:Quart.easeInOut},
-			{top:'0' ,ease:Quart.easeInOut}
-		);
-
+	slideUp(el) {
 		new TweenMax.fromTo(el.image,0.7,
 			{top:'100%', bottom:'0%',ease:Quart.easeInOut},
 			{top:'0%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
 	}
-	slideDown(el,number) {
-		new TweenMax.fromTo(el.realImage,0.7,
-			{top:'0',ease:Quart.easeInOut},
-			{top:'-100vh' ,ease:Quart.easeInOut}
-		);
-
+	slideDown(el) {
 		new TweenMax.fromTo(el.image,0.7,
 			{top:'0', bottom:'0%',ease:Quart.easeInOut},
 			{top:'100%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
 	}
 
-	slideDownText(el,n) {
-		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.3,
+	slideDownText(n) {
+		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
 			{paddingTop:'65px',ease:Quart.easeInOut},
 			{paddingTop:'0',ease:Quart.easeInOut}
-		,0.3);
+		,0.1);
 	}
-	slideUpText(el,n) {
-		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.3,
+	slideUpText(n) {
+		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
 			{paddingTop:'0',ease:Quart.easeInOut},
 			{paddingTop:'65px',ease:Quart.easeInOut}
-		,0.3);
+		,0.1);
 	}
 
-	animatePlan(e) {
-		return;
+	slideTagsDown(c) {
+		new TweenMax.fromTo('.project-tags-' + c,0.4,
+			{paddingTop:'0px'},
+			{paddingTop:'35px'}
+		);
+	}
 
-		var els = this.getSectionElements(this.activeSection);
+	slideTagsUp(c) {
+		new TweenMax.fromTo('.project-tags-' + c,0.4,
+			{paddingTop:'35px'},
+			{paddingTop:'0px'}
+		);
+	}
 
-		var center = {
-			h: window.innerHeight/2,
-			w: window.innerWidth/2
-		};
-
-		var pos = {
-			x:e.clientX,
-			y:e.clientY
-		};
-
-		var m = {
-			x:( pos.x - center.w),
-			y:( pos.y - center.h)
-		};
-
-		m.x /= center.w;
-		m.y /= center.h;
-
-		// m.x *= 5;
-		// m.y *= 5;
-
-		els.image.style.transform = 'skewx('+m.x+'deg) skewy('+m.y+'deg)'; //;
+	preload(callback) {
+		var tl = new TimelineLite({onComplete: callback});
+		tl
+			.fromTo(document.querySelectorAll('.project-image'),0.7,
+				{top:'0%' ,bottom:'0%',ease:Quart.easeInOut},
+				{top:'100%', bottom:'0%',ease:Quart.easeInOut}
+			)
 	}
 }

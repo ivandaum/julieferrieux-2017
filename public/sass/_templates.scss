@@ -17,7 +17,17 @@ body.noselect * {
   /* Non-prefixed version, currently
                                    supported by Chrome and Opera */
 }
-
+.loader {
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  background: $background;
+  z-index:300;
+  will-change:opacity;
+  @include transition-css(opacity);
+}
 .project {
   pointer-events: none;
   position:absolute;
@@ -48,6 +58,9 @@ body.noselect * {
   }
 
   .project-tags {
+    overflow:hidden;
+    height:35px;
+    padding-top:35px;
     p {
       display: inline;
       font-size: 13px;
@@ -155,7 +168,7 @@ body.noselect * {
   will-change:height;
 
   top:0;
-  bottom:0;
+  bottom:100%;
   left:0;
   right:0;
 
@@ -165,6 +178,7 @@ body.noselect * {
     width:100vw;
     height:100vh;
     position:absolute;
+    background-attachment: fixed;
     left:0;
     top:0;
     display:block;

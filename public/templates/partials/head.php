@@ -23,5 +23,5 @@
 </head>
 <?php global $bodyClass ?>
 <body class="<?= $bodyClass ?>">
-
+<div class="loader"></div>
 <a href="#" class="about-section-button text-uppercase">Contact</a>
