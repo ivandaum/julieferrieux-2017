@@ -54,7 +54,8 @@ class HomeSwitcher {
 		var domNumber = number + 1;
 
 		return {
-			image: document.querySelector('.project-image-' + domNumber)
+			image: document.querySelector('.project-image-' + domNumber),
+			imageBackground: document.querySelector('.project-image-' + domNumber + ' .image-preview')
 		}
 	}
 
@@ -73,22 +74,24 @@ class HomeSwitcher {
 			new TweenMax.set(next.image,{zIndex:2,top:'0%',bottom:'0%'});
 			new TweenMax.set(current.image,{zIndex:5});
 
-			_this.slideDown(current);
+			_this.slideImageDown(current);
 		} else {
 			new TweenMax.set(current.image,{zIndex:2});
 			new TweenMax.set(next.image,{zIndex:5});
 
-			_this.slideUp(next);
+			_this.slideImageUp(next);
 		}
 
-		this.slideUpText(c);
-		this.slideDownText(n);
+		this.moveDot(n);
+		this.slideTextUp(c);
+		this.slideTextDown(n);
 		this.slideTagsUp(n);
 		this.slideTagsDown(c);
 
 		setTimeout(function() {
 			_this.flagSwitching = false;
 			new TweenMax.set('.project-image',{zIndex:1});
+			new TweenMax.set('.project-image .image-preview',{backgroundPosition:'center 0px'});
 			new TweenMax.set(next.image,{zIndex:5});
 		},1500);
 
@@ -102,31 +105,39 @@ class HomeSwitcher {
 		n++;
 		new TweenMax.set(next.image,{zIndex:5});
 
-		this.slideDownText(n);
-		this.slideUp(next);
+		this.slideTextDown(n);
+		this.slideImageUp(next);
 		this.slideTagsUp(n);
 	}
 
-	slideUp(el) {
-		new TweenMax.fromTo(el.image,0.7,
+	slideImageUp(el) {
+		new TweenMax.fromTo(el.image,1,
 			{top:'100%', bottom:'0%',ease:Quart.easeInOut},
 			{top:'0%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
+		new TweenMax.fromTo(el.imageBackground,1,
+			{backgroundPosition:'center 200px',ease:Quart.easeInOut},
+			{backgroundPosition:'center 0px',ease:Quart.easeInOut}
+		);
 	}
-	slideDown(el) {
-		new TweenMax.fromTo(el.image,0.7,
+	slideImageDown(el) {
+		new TweenMax.fromTo(el.image,1,
 			{top:'0', bottom:'0%',ease:Quart.easeInOut},
 			{top:'100%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
+		new TweenMax.fromTo(el.imageBackground,1,
+			{backgroundPosition:'center 0px',ease:Quart.easeInOut},
+			{backgroundPosition:'center 200px',ease:Quart.easeInOut}
+		);
 	}
 
-	slideDownText(n) {
+	slideTextDown(n) {
 		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
 			{paddingTop:'65px',ease:Quart.easeInOut},
 			{paddingTop:'0',ease:Quart.easeInOut}
 		,0.1);
 	}
-	slideUpText(n) {
+	slideTextUp(n) {
 		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
 			{paddingTop:'0',ease:Quart.easeInOut},
 			{paddingTop:'65px',ease:Quart.easeInOut}
@@ -147,10 +158,20 @@ class HomeSwitcher {
 		);
 	}
 
+	moveDot(n) {
+		var top = document.querySelector('.project-menu-' + n).offsetTop;
+		var $dot = document.querySelector('.project-menu-position');
+		var timeline = new TimelineMax();
+		timeline
+			.set($dot,{height:'20px'})
+			.to($dot,0.5,{top:top})
+			.set($dot,{height:'10px'});
+	}
+
 	preload(callback) {
 		var tl = new TimelineLite({onComplete: callback});
 		tl
-			.fromTo(document.querySelectorAll('.project-image'),0.7,
+			.fromTo(document.querySelectorAll('.project-image'),1,
 				{top:'0%' ,bottom:'0%',ease:Quart.easeInOut},
 				{top:'100%', bottom:'0%',ease:Quart.easeInOut}
 			)

@@ -26,6 +26,7 @@ body.noselect * {
   background: $background;
   z-index:300;
   will-change:opacity;
+  pointer-events: none;
   @include transition-css(opacity);
 }
 .project {
@@ -106,6 +107,19 @@ body.noselect * {
     bottom:0;
     z-index:5;
   }
+  .project-menu-position {
+    width:10px;
+    height:10px;
+    background:$red;
+    border-radius:5px;
+    top:0;
+    left:0;
+    right:0;
+    margin:auto;
+    position:absolute;
+    z-index:15;
+    @include transition-css(height);
+  }
 
   li {
     display:block;
@@ -113,16 +127,6 @@ body.noselect * {
     height:10px;
     margin-bottom:30px;
     position: relative;
-
-    &.active span {
-      width:10px;
-      height:10px;
-      background:$red;
-    }
-
-    &.active .project-number {
-      opacity:1;
-    }
 
     span {
       border-radius:50%;
@@ -138,6 +142,10 @@ body.noselect * {
       z-index:10;
       margin:auto;
       @include transition-css(all);
+    }
+
+    &.active .project-number {
+      opacity:1;
     }
 
     .project-number {
@@ -166,7 +174,7 @@ body.noselect * {
   position:absolute;
   overflow:hidden;
   will-change:height;
-
+  display:block;
   top:0;
   bottom:100%;
   left:0;
