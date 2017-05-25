@@ -91,7 +91,7 @@ class HomeSwitcher {
 		setTimeout(function() {
 			_this.flagSwitching = false;
 			new TweenMax.set('.project-image',{zIndex:1});
-			new TweenMax.set('.project-image .image-preview',{backgroundPosition:'center 0px'});
+			new TweenMax.set('.project-image .image-preview',{transform:'scale(1)'});
 			new TweenMax.set(next.image,{zIndex:5});
 		},1500);
 
@@ -111,24 +111,34 @@ class HomeSwitcher {
 	}
 
 	slideImageUp(el) {
-		new TweenMax.fromTo(el.image,1,
+		new TweenMax.fromTo(el.image,0.7,
 			{top:'100%', bottom:'0%',ease:Quart.easeInOut},
 			{top:'0%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
-		new TweenMax.fromTo(el.imageBackground,1,
-			{backgroundPosition:'center 200px',ease:Quart.easeInOut},
-			{backgroundPosition:'center 0px',ease:Quart.easeInOut}
-		);
+		// new TweenMax.fromTo(el.imageBackground,1,
+		// 	{backgroundPosition:'center 200px',ease:Quart.easeInOut},
+		// 	{backgroundPosition:'center 0px',ease:Quart.easeInOut}
+		// );
+		// new TweenMax.fromTo(el.imageBackground,1,
+		// 	{transform:'scale(1.1)',ease:Quart.easeInOut},
+		// 	{transform:'scale(1)',ease:Quart.easeInOut}
+		// );
 	}
 	slideImageDown(el) {
-		new TweenMax.fromTo(el.image,1,
+		new TweenMax.fromTo(el.image,0.7,
 			{top:'0', bottom:'0%',ease:Quart.easeInOut},
 			{top:'100%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
-		new TweenMax.fromTo(el.imageBackground,1,
-			{backgroundPosition:'center 0px',ease:Quart.easeInOut},
-			{backgroundPosition:'center 200px',ease:Quart.easeInOut}
-		);
+		// new TweenMax.fromTo(el.imageBackground,1,
+		// 	{backgroundPosition:'center 0px',ease:Quart.easeInOut},
+		// 	{backgroundPosition:'center 200px',ease:Quart.easeInOut}
+		// );
+
+
+		// new TweenMax.fromTo(el.imageBackground,1,
+		// 	{transform:'scale(1)',ease:Quart.easeInOut},
+		// 	{transform:'scale(1.1)',ease:Quart.easeInOut}
+		// );
 	}
 
 	slideTextDown(n) {
@@ -162,10 +172,24 @@ class HomeSwitcher {
 		var top = document.querySelector('.project-menu-' + n).offsetTop;
 		var $dot = document.querySelector('.project-menu-position');
 		var timeline = new TimelineMax();
-		timeline
-			.set($dot,{height:'20px'})
-			.to($dot,0.5,{top:top})
-			.set($dot,{height:'10px'});
+
+		if(this.activeSection > (top/20)-1) {
+			timeline
+				.set($dot,{height:'20px'})
+				.to($dot,0.5,{top:top})
+				.set($dot,{height:'10px'});
+
+			console.log('here');
+		} else {
+			timeline
+				.set($dot,{height:'20px'})
+				.to($dot,0.4,{top:top-10})
+				.call(function() {
+					new TweenMax.set($dot,{height:'10px'});
+					new TweenMax.to($dot,0.3,{top:top});
+				})
+		}
+
 	}
 
 	preload(callback) {
