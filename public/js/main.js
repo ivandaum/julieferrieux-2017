@@ -7,7 +7,13 @@ console.log('');
 
 
 new Loader(function() {
-	setTimeout(function() {
-		new HomeSwitcher();
-	},200);
+	if(document.querySelector('.home')) {
+		setTimeout(function() {
+			new HomeSwitcher();
+		},200);
+	} else {
+		setTimeout(function() {
+			new Project();
+		},200);
+	}
 });

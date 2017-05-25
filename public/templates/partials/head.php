@@ -24,4 +24,5 @@
 <?php global $bodyClass ?>
 <body class="<?= $bodyClass ?>">
 <div class="loader"></div>
-<a href="#" class="about-section-button text-uppercase">Contact</a>
+<a href="/" class="nav-button nav-projects text-uppercase">Projects</a>
+<a href="/" class="nav-button nav-about text-uppercase">Contact</a>

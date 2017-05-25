@@ -1,37 +1,31 @@
-<div class="single container moved-by-navbar">
-    <div class="section-container ">
+<div class="single container">
 
-        <div class="title content-container">
-            <h1><?= $project['title'] ?></h1>
-        </div>
-        <div class="single-content content-container">
-            <p class="project-year"><?= $project['date_year'] ?></p>
-            <div class="single-content-cover">
-                <img src="<?= $project['image']['medium'] ?>" alt="">
-            </div>
-            <div class="single-content-text">
-                <?php if($project['has_content']): ?>
-                    <?= $project['content'] ?>
-                <?php endif; ?>
-            </div>
-            <button class="to-top">
-                <?= svg('arrow'); ?>
-                <span>Top</span>
-            </button>
-        </div>
+    <div class="project-image project-image-<?= $project['number'] ?>" >
+        <div class="image-preview" data-image="<?= $project['image']['url'] ?>" style="background-image:url(<?= $project['image']['url'] ?>);"></div>
+    </div>
 
-        <div class="clearfix">
-
-        <?php if($project['next_post']): ?>
-        <div class="next-project hidden-desktop hidden-tablet">
-            <a href="<?= $project['next_post'] ?>" class="ajax-link">Next</a>
+    <div class="section-container">
+        <div class="title" style="color:<?= $project['color'] ?>">
+            <div class="number"><span><?php if($project['number'] < 10): ?>0<?php endif; ?><?= $project['number'] ?></span><div style="background-color:<?= $project['color'] ?>"></div></div>
+            <h1><?= explodeTitle($project['title']) ?></h1>
         </div>
+    </div>
+
+
+    <div class="container single-content">
+        <?php if($project['content']): ?>
+            <?= $project['content'] ?>
         <?php endif; ?>
-        </div>
     </div>
 
-
-    <div class="single-background">
-
+    <?php if($project['next_post']): ?>
+    <div class="container next-project" style="background-image:url(<?= $project['next_post']['image']['url'] ?>)">
+        <a href="<?= $project['next_post']['link'] ?>" class="title">
+            <p class="next-project-title"><?= $project['next_post']['title'] ?></p>
+            <p class="text-uppercase">Projet suivant</p>
+        </a>
+        <div class="next-project-background container" style="background-color:<?= $project['color'] ?>" data-next-color="<?= $project['next_post']['color'] ?>"></div>
     </div>
+    <?php endif; ?>
+
 </div>

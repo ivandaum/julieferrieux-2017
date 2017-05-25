@@ -5,6 +5,7 @@ body {
   font-family: $secondFont;
   font-weight: 400;
   overflow: hidden;
+  overflow-y: scroll;
 }
 
 body.noselect * {
@@ -29,6 +30,9 @@ body.noselect * {
   pointer-events: none;
   @include transition-css(opacity);
 }
+.home {
+  overflow:hidden;
+}
 .project {
   pointer-events: none;
   position:absolute;
@@ -42,6 +46,9 @@ body.noselect * {
   h2 {
     font-size: 65px;
     line-height: 65px;
+    a {
+      color:inherit;
+    }
     span {
       height:65px;
       width:100%;
@@ -170,7 +177,6 @@ body.noselect * {
 }
 
 .project-image {
-  @include transition-css(height,0.5s);
   position:absolute;
   overflow:hidden;
   will-change:height;
@@ -179,8 +185,9 @@ body.noselect * {
   bottom:100%;
   left:0;
   right:0;
-
   z-index:1;
+  height: 100vh;
+  width: 100vw;
 
   .image-preview {
     width:100vw;
@@ -194,5 +201,83 @@ body.noselect * {
     background-repeat: no-repeat;
     background-position: center center;
     z-index:1;
+  }
+}
+
+.single .project-image {
+  bottom:0;
+  .image-preview {
+    margin:auto;
+    width:auto;
+    height:auto;
+    max-width:1000px;
+    max-height:600px;
+    right:200px;
+    left:200px;
+    bottom:0;
+    top:0;
+  }
+}
+
+.single .title {
+  font-size:100px;
+  line-height:80px;
+  height:200px;
+  position:absolute;
+  z-index:10;
+  top:0;
+  bottom:0;
+  left:50px;
+  margin:auto;
+  span {
+    display:block;
+  }
+  .number {
+    font-size:13px;
+    line-height:20px;
+    margin-bottom:25px;
+    div {
+      height:1px;
+      width:20px;
+      display:inline-block;
+      margin-left:10px;
+      margin-bottom: 5px;
+    }
+    span {
+      display:inline;
+      line-height:20px;
+    }
+  }
+}
+.single .single-content {
+  img {
+    width:100%;
+    height:auto;
+    margin:0;
+    display:block;
+  }
+}
+.single .next-project {
+  background-attachment: fixed;
+  display:block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index:1;
+  .title {
+    font-family: $secondFont;
+    color:white;
+    width:100%;
+    text-align:center;
+    p {
+      font-size:13px;
+      line-height:15px;
+      font-weight:bold;
+    }
+    .next-project-title {
+      font-family: $primaryFont;
+      font-size:150px;
+      line-height:150px;
+    }
   }
 }

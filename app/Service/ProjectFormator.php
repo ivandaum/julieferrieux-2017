@@ -21,7 +21,7 @@ class ProjectFormator
     }
 
 
-    static public function formatOne($project, $key = null)
+    static public function formatOne($project, $key = 0)
     {
 
         $formatedProject = array();
@@ -38,7 +38,7 @@ class ProjectFormator
 	    $formatedProject['image'] = get_field('image_cover',$project->ID);
         $formatedProject['content'] = wpautop($project->post_content);
 
-	    $formatedProject['next_post'] = get_next_post( true );
+	    $nextPost = get_previous_post( true );
 
 	    if(is_int($key)) $formatedProject['number'] = $key+1;
 
@@ -47,9 +47,11 @@ class ProjectFormator
             $formatedProject['tags'][] = $tag->name;
         }
 
-
-        if($formatedProject['next_post']) {
-            $formatedProject['next_post'] = get_permalink($formatedProject['next_post']->ID);
+        if($nextPost) {
+            $formatedProject['next_post']['link'] = get_permalink($nextPost->ID);
+            $formatedProject['next_post']['color'] = get_field('color',$nextPost->ID);
+            $formatedProject['next_post']['title'] = get_the_title($nextPost->ID);
+            $formatedProject['next_post']['image'] = get_field('image_cover',$nextPost->ID);
         }
 
         return $formatedProject;
