@@ -255,6 +255,8 @@ body.noselect * {
     height:auto;
     margin:0;
     display:block;
+    opacity:0;
+    @include transition-css(opacity,1s);
   }
 }
 .single .next-project {
