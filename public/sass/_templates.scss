@@ -18,6 +18,10 @@ body.noselect * {
   /* Non-prefixed version, currently
                                    supported by Chrome and Opera */
 }
+h1,h2,h3,h4,h5,h6 {
+  font-family: $primaryFont;
+  color:$white;
+}
 .loader {
   position:absolute;
   top:0;
@@ -26,6 +30,7 @@ body.noselect * {
   left:0;
   background: $background;
   z-index:300;
+  opacity:0;
   will-change:opacity;
   pointer-events: none;
   @include transition-css(opacity);
@@ -280,6 +285,95 @@ body.noselect * {
       font-family: $primaryFont;
       font-size:150px;
       line-height:150px;
+    }
+  }
+}
+
+.contact {
+  background:$red;
+  height:100vh;
+  width:500px;
+  max-width:100%;
+  right:0;
+  top:0;
+  position:fixed;
+  z-index:200;
+  color:$white;
+
+  h3 {
+    font-size:50px;
+    margin-bottom:40px;
+  }
+  .contact-content {
+    width:70%;
+    margin:auto;
+    padding-top:25vh;
+    height: 95vh;
+    position: relative;
+  }
+  .close-contact {
+    color:$white;
+    position:absolute;
+    top:50px;
+    right:50px;
+    width:30px;
+    height:30px;
+    display:block;
+    font-size:20px;
+    line-height:30px;
+    text-align:center;
+    cursor:pointer;
+  }
+  .content {
+    font-size:14px;
+    line-height:24px;
+    a {
+      color:$white;
+    }
+    .separator {
+      width:30px;
+      background:$white;
+      height:1px;
+      display:block;
+      margin:25px 0;
+    }
+  }
+  .networks {
+    position: absolute;
+    bottom: 0;
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    li {
+      width:25%;
+      display:block;
+    }
+    li a {
+      color:$white;
+      font-size:12px;
+      line-height:14px;
+      text-transform: capitalize;
+      position:relative;
+      opacity:0.7;
+      @include transition-css(opacity);
+      &:before {
+        width:15px;
+        height:1px;
+        background:$white;
+        content:" ";
+        margin:0;
+        position:absolute;
+        top:-15px;
+        pointer-events: none;
+        @include transition-css(width);
+      }
+
+      &:hover {
+        opacity: 1;
+        &:before {
+          width:30px;
+        }
+      }
     }
   }
 }

@@ -4,9 +4,12 @@ use App\Model\Project;
 use \App\Service\ProjectFormator;
 
 class Page extends Controller {
-    public function __construct()
+	public $about = [];
+
+	public function __construct()
     {
         parent::__construct();
+	    $this->about = $this->getAboutPage();
     }
 
     public function home()
@@ -17,7 +20,8 @@ class Page extends Controller {
         $projects = ProjectFormator::formatAll($projects);
 
         self::render('projects',[
-            'projects' => $projects
+            'projects' => $projects,
+	        'about' => $this->about
         ]);
     }
 
@@ -30,7 +34,8 @@ class Page extends Controller {
         $category = get_category_by_slug($project['category']);
         self::render('single',[
             'project' => $project,
-            'category' => $category
+            'category' => $category,
+	        'about' => $this->about
         ]);
     }
 
@@ -58,12 +63,32 @@ class Page extends Controller {
 
         self::render('page',[
             'post' => $this->post,
-            'cover' => $cover
+            'cover' => $cover,
+	        'about' => $this->about
         ]);
     }
 
     public function page404()
     {
         self::render('404');
+    }
+
+    public function getAboutPage()
+    {
+	    $about = get_page_by_path('a-propos');
+
+	    $page = [
+	    	'title' => 'À propos',
+	    	'content' => apply_filters('the_content', $about->post_content),
+	        'email' => get_field('email',$about->ID),
+	        'networks' => [
+		        'pinterest' => get_field('email',$about->ID),
+		        'instagram' => get_field('instagram',$about->ID),
+		        'behance' => get_field('behance',$about->ID),
+		        'linkedin' => get_field('linkedin',$about->ID)
+	        ]
+	    ];
+
+	    return $page;
     }
 }

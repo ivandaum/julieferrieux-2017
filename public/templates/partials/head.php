@@ -26,3 +26,19 @@
 <div class="loader"></div>
 <a href="/" class="nav-button nav-projects text-uppercase">Projects</a>
 <a href="/" class="nav-button nav-about text-uppercase">Contact</a>
+<div class="contact">
+    <span class="close-contact">&times;</span>
+    <div class="contact-content">
+        <h3><?= $about['title'] ?></h3>
+        <div class="content">
+            <?= $about['content'] ?>
+            <div class="separator"></div>
+            <b><a href="mailto:<?= $about['email'] ?>"><?= $about['email'] ?></a></b>
+        </div>
+        <ul class="networks">
+            <?php foreach($about['networks'] as $name => $link): ?>
+                <li><a target="_blank" href="<?= $link ?>"><?= $name ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
