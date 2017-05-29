@@ -15,7 +15,8 @@
 		<?php foreach ($projects as $project): ?>
 			<div class="project container project-<?= $project['number'] ?> <?php if($project['number'] == 1):?> active<?php endif; ?>" data-number="<?= $project['number'] ?>" style="color:<?= $project['color'] ?>">
 					<div class="project-content">
-						<h2 class="project-title project-title-<?= $project['number'] ?>"><a href="<?= $project['link'] ?>"><?= explodeTitle($project['title']) ?></a></h2>
+						<h2 class="project-title project-title-<?= $project['number'] ?>">
+							<a data-projectnumber="<?= $project['number'] ?>" href="<?= $project['link'] ?>" class="ajax-link"><?= explodeTitle($project['title']) ?></a></h2>
 						<div style="background-color:<?= $project['color'] ?>" class="project-border"></div>
 						<div class="project-tags project-tags-<?= $project['number'] ?> text-uppercase">
 							<?php foreach ($project['tags'] as $tag): ?>

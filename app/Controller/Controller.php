@@ -13,7 +13,7 @@ class Controller {
         $this->post = $post;
         $this->wp = $wp;
         $this->wp_query = $wp_query;
-        self::$isAjax = !empty($_GET['ajax']) ? true : false;
+        self::$isAjax = !empty($_GET['nolayout']) ? true : false;
 
 
         $bodyClass = '';

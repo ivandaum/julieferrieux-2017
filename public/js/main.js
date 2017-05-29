@@ -21,7 +21,7 @@ document.querySelector('.close-contact').addEventListener('click', contactClick)
 new Loader(function() {
 	if(document.querySelector('.home')) {
 		setTimeout(function() {
-			new HomeSwitcher();
+			new Home();
 		},200);
 	} else {
 		setTimeout(function() {

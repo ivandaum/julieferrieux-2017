@@ -1,4 +1,4 @@
-class HomeSwitcher {
+class Home {
 	constructor() {
 		var _this = this;
 		this.activeSection = null;
@@ -8,6 +8,8 @@ class HomeSwitcher {
 			active:'active'
 		};
 
+
+		new Binder();
 		this.sections = document.querySelectorAll('.'+this.className.project);
 		this.preload(function() {
 			document.querySelector('.loader').style.opacity = 0;
@@ -115,30 +117,12 @@ class HomeSwitcher {
 			{top:'100%', bottom:'0%',ease:Quart.easeInOut},
 			{top:'0%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
-		// new TweenMax.fromTo(el.imageBackground,1,
-		// 	{backgroundPosition:'center 200px',ease:Quart.easeInOut},
-		// 	{backgroundPosition:'center 0px',ease:Quart.easeInOut}
-		// );
-		// new TweenMax.fromTo(el.imageBackground,1,
-		// 	{transform:'scale(1.1)',ease:Quart.easeInOut},
-		// 	{transform:'scale(1)',ease:Quart.easeInOut}
-		// );
 	}
 	slideImageDown(el) {
 		new TweenMax.fromTo(el.image,0.7,
 			{top:'0', bottom:'0%',ease:Quart.easeInOut},
 			{top:'100%' ,bottom:'0%',ease:Quart.easeInOut}
 		);
-		// new TweenMax.fromTo(el.imageBackground,1,
-		// 	{backgroundPosition:'center 0px',ease:Quart.easeInOut},
-		// 	{backgroundPosition:'center 200px',ease:Quart.easeInOut}
-		// );
-
-
-		// new TweenMax.fromTo(el.imageBackground,1,
-		// 	{transform:'scale(1)',ease:Quart.easeInOut},
-		// 	{transform:'scale(1.1)',ease:Quart.easeInOut}
-		// );
 	}
 
 	slideTextDown(n) {

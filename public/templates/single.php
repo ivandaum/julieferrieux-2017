@@ -1,8 +1,9 @@
 <div class="single container">
-
+    <?php if(!isset($_GET['nolayout'])): ?>
     <div class="project-image project-image-<?= $project['number'] ?>" >
         <div class="image-preview" data-image="<?= $project['image']['url'] ?>" style="background-image:url(<?= $project['image']['url'] ?>);"></div>
     </div>
+    <?php endif; ?>
 
     <div class="section-container">
         <div class="title" style="color:<?= $project['color'] ?>">
@@ -20,7 +21,7 @@
 
     <?php if($project['next_post']): ?>
     <div class="container next-project" style="background-image:url(<?= $project['next_post']['image']['url'] ?>)">
-        <a href="<?= $project['next_post']['link'] ?>" class="title">
+        <a href="<?= $project['next_post']['link'] ?>" class="ajax-link title">
             <p class="next-project-title"><?= $project['next_post']['title'] ?></p>
             <p class="text-uppercase">Projet suivant</p>
         </a>
