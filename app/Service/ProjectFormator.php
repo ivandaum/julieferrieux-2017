@@ -38,6 +38,8 @@ class ProjectFormator
 	    $formatedProject['image'] = get_field('image_cover',$project->ID);
         $formatedProject['content'] = wpautop($project->post_content);
 
+	    $formatedProject['content'] = str_replace('<img','<div class="content-image"><img',$formatedProject['content']);
+	    $formatedProject['content'] = str_replace('/>','/></div>',$formatedProject['content']);
 	    $nextPost = get_previous_post( true );
 
 	    if(is_int($key)) $formatedProject['number'] = $key+1;

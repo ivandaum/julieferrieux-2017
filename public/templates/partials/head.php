@@ -24,8 +24,10 @@
 <?php global $bodyClass ?>
 <body class="<?= $bodyClass ?>">
 <div class="loader"></div>
-<a href="/" class="nav-button nav-projects ajax-link text-uppercase">Projects</a>
-<a href="#" class="nav-button nav-about text-uppercase">Contact</a>
+<div class="navigation">
+    <a href="/" class="nav-button nav-projects ajax-link text-uppercase">Projects</a>
+    <a href="#" class="nav-button nav-about text-uppercase">Contact</a>
+</div>
 <div class="contact">
     <span class="close-contact">&times;</span>
     <div class="contact-content">

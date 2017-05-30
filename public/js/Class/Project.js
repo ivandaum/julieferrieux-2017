@@ -1,7 +1,8 @@
 class Project {
 	constructor() {
-
-		new Binder();
+		IS_HOME = false;
+		var binder = new Binder();
+		binder.link('#app .ajax-link');
 		document.querySelector('.loader').style.opacity = 0;
 		new LazyLoading('.single-content');
 

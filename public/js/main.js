@@ -17,15 +17,19 @@ function contactClick(e) {
 }
 document.querySelector('.nav-about').addEventListener('click', contactClick);
 document.querySelector('.close-contact').addEventListener('click', contactClick);
+var IS_HOME = null;
+var CONTROLLER = null;
 
 new Loader(function() {
+	var binder = new Binder();
+	binder.menu();
 	if(document.querySelector('.home')) {
 		setTimeout(function() {
-			new Home();
+			CONTROLLER = new Home();
 		},200);
 	} else {
 		setTimeout(function() {
-			new Project();
+			CONTROLLER = new Project();
 		},200);
 	}
 });

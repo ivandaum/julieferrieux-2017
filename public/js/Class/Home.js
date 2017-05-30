@@ -1,5 +1,6 @@
 class Home {
 	constructor() {
+		IS_HOME = true;
 		var _this = this;
 		this.activeSection = null;
 		this.direction = null;
@@ -9,47 +10,51 @@ class Home {
 		};
 
 
-		new Binder();
+		var binder = new Binder();
+		binder.link('#app .ajax-link');
 		this.sections = document.querySelectorAll('.'+this.className.project);
 		this.preload(function() {
 			document.querySelector('.loader').style.opacity = 0;
 			_this.flagSwitching = false;
 
-			document.addEventListener('mousewheel', function(e) {
-				_this.switchSection(e);
-			});
+			document.addEventListener('mousewheel', _this.switchSection)
 
 			_this.activeSection = 0;
 			_this.showFirst(_this.activeSection);
 		});
 
 	}
-
+	unbind() {
+		document.removeEventListener("mousewheel",CONTROLLER.switchSection);
+	}
 	switchSection(e) {
+		var _this = CONTROLLER;
 
-		this.direction = e.deltaY < 0 ? 'previous' : 'next';
+		if(!IS_HOME) return;
 
-		if(this.flagSwitching) return;
+		_this.direction = e.deltaY < 0 ? 'previous' : 'next';
 
-		this.flagSwitching = true;
+		if(_this.flagSwitching) return;
+
+		_this.flagSwitching = true;
 		var nextSection = null;
 
-		if(this.direction == 'previous') {
-			if(isDefined(this.sections[this.activeSection - 1])) {
-				nextSection = this.activeSection - 1;
+		if(_this.direction == 'previous') {
+			if(isDefined(_this.sections[_this.activeSection - 1])) {
+				nextSection = _this.activeSection - 1;
 			} else {
-				nextSection = this.sections.length - 1;
+				nextSection = _this.sections.length - 1;
 			}
 		} else {
-			if(isDefined(this.sections[this.activeSection + 1])) {
-				nextSection = this.activeSection + 1;
+			if(isDefined(_this.sections[_this.activeSection + 1])) {
+				nextSection = _this.activeSection + 1;
 			} else {
 				nextSection = 0;
 			}
 		}
 
-		this.animate(this.activeSection,nextSection);
-		this.activeSection = nextSection;
+		_this.animate(_this.activeSection,nextSection);
+		_this.activeSection = nextSection;
 	}
 
 	getSectionElements(number) {
@@ -163,7 +168,6 @@ class Home {
 				.to($dot,0.5,{top:top})
 				.set($dot,{height:'10px'});
 
-			console.log('here');
 		} else {
 			timeline
 				.set($dot,{height:'20px'})
