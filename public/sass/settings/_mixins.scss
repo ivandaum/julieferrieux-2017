@@ -16,8 +16,8 @@
   //-o-transition-timing-function: cubic-bezier(0.000, 0.000, 0.580, 1.000);
   //transition-timing-function: cubic-bezier(0.000, 0.000, 0.580, 1.000); /* ease-out */
   //
-  -webkit-transition-timing-function: ease-in-out;
-  -moz-transition-timing-function: ease-in-out;
-  -o-transition-timing-function: ease-in-out;
-  transition-timing-function: ease-in-out; /* ease-in-out */
+  -webkit-transition-timing-function: cubic-bezier(.88,.01,.23,.99);
+  -moz-transition-timing-function: cubic-bezier(.88,.01,.23,.99);
+  -o-transition-timing-function: cubic-bezier(.88,.01,.23,.99);
+  transition-timing-function: cubic-bezier(.88,.01,.23,.99); /* cubic-bezier(.88,.01,.23,.99) */
 }

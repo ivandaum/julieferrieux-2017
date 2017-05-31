@@ -9,6 +9,7 @@ JS_FILE = [
     '!./node_modules/gsap/src/uncompressed/jquery.gsap.js',
     './node_modules/gsap/src/uncompressed/*.js',
     './public/js/functions.js',
+    './public/js/Vendors/*.js',
     './public/js/Class/*.js',
     './public/js/main.js'
 ];

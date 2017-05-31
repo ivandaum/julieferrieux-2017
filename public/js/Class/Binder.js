@@ -17,17 +17,35 @@ class Binder {
 
 				if(hasClass(body,'body-home')) {
 					Transitions.hideHome(number);
+				} else if(hasClass(body,'body-single')) {
+
+
+					if(hasClass(this,'link-next-project')) {
+						var scroll = {top:document.documentElement.scrollTop || document.body.scrollTop};
+						new TweenMax.to(scroll,1,{
+							top:document.querySelector('body').offsetHeight - window.innerHeight,
+							ease:getEase(),
+							onUpdate:function() {
+								window.scrollTo(0,scroll.top);
+							}
+						})
+					}
+					Transitions.hideProject(number);
 				}
 
 				Ajax.get(l,function(data) {
 					data = JSON.parse(data);
 					if(data.class == 'body-single' && IS_HOME) {
 						Transitions.homeToProject(number,data);
-					} else if(data.class == 'body-home' && hasClass(body,'body-single')) {
+					} else if(data.class == 'body-home' && IS_HOME) {
 						Transitions.projectToHome(number,data);
+					} else if(data.class == 'body-single' && !IS_HOME) {
+						Transitions.projectToProject(number,data);
+					} else {
+						window.location.href = l;
 					}
 
-					// window.history.pushState({}," ",l)
+					window.history.pushState({}," ",l)
 				});
 			});
 		}

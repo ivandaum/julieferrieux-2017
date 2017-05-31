@@ -306,21 +306,39 @@ h1,h2,h3,h4,h5,h6 {
   background-repeat: no-repeat;
   background-position: center center;
   z-index:1;
-  .title {
+  a {
     font-family: $secondFont;
     color:white;
     width:100%;
     text-align:center;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:10;
+    margin:auto;
+    height:115px;
     p {
       font-size:13px;
       line-height:15px;
       font-weight:bold;
+      opacity:1;
     }
     .next-project-title {
       font-family: $primaryFont;
-      font-size:150px;
-      line-height:150px;
+      font-size:100px;
+      line-height:100px;
     }
+  }
+  .next-project-background {
+    @include transition-css(width);
+  }
+  .next-project-background.show-next {
+    width:80vw;
+  }
+  .next-project-background.hide {
+    width:0 !important;
   }
 }
 

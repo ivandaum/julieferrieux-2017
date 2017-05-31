@@ -23,6 +23,10 @@ function removeClass(el, className) {
     }
 }
 
+function getEase() {
+    return CustomEase.create("custom", "M0,0 C0.398,0 0.5,0.384 0.5,0.566 0.5,0.92 0.546,1 1,1");
+}
+
 function isDefined(el) {
 
     return typeof el != 'undefined' && typeof el !== null;

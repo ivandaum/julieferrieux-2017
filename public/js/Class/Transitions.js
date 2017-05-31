@@ -23,37 +23,13 @@ var Transitions = {
 			);
 	},
 
-	homeToProject: function(number,data) {
-		IS_HOME = false;
-		setTimeout(function() {
-			var $image = document.querySelector('.project-image-' + number );
-
-			document.querySelector('#app').innerHTML = "";
-			document.querySelector('#app').appendChild($image);
-			document.querySelector('#app').innerHTML  += data.html;
-
-			new Loader(function() {
-				CONTROLLER = new Project();
-			});
-		},1000);
-	},
-	projectToHome: function(number,data) {
+	hideProject: function(number) {
 		var body = document.querySelector('body');
 		var timeline = new TimelineMax({onComplete:function() {
-			setTimeout(function() {
-				document.querySelector('.loader').style.opacity = 1;
-			},500);
-			setTimeout(function() {
-				if(hasClass(body,'body-single')) {
-					addClass(body,'body-home');
-					removeClass(body,'body-single');
-				}
 
-				document.querySelector('#app').innerHTML = data.html;
-				new Loader(function() {
-					CONTROLLER = new Home();
-				});
-			},1000);
+			if(hasClass(body,'body-single')) {
+				removeClass(body,'body-single');
+			}
 		}});
 		timeline
 			.call(function() {
@@ -71,5 +47,66 @@ var Transitions = {
 					}
 				}
 			})
+			.to('.next-project-background',0.5,{width:'0',ease:Quart.easeInOut})
+			.staggerTo('.next-project p',0.5,{opacity:0},0.2)
+			.call(function() {
+				addClass(document.querySelector('.next-project-background'),'hide');
+			});
+	},
+
+	homeToProject: function(number,data) {
+		IS_HOME = false;
+		setTimeout(function() {
+			var $image = document.querySelector('.project-image-' + number );
+
+			document.querySelector('#app').innerHTML = "";
+			document.querySelector('#app').appendChild($image);
+			document.querySelector('#app').innerHTML  += data.html;
+
+			new Loader(function() {
+				CONTROLLER = new Project();
+			});
+		},1000);
+	},
+	projectToProject: function(number,data) {
+		setTimeout(function() {
+			var background = document.querySelector('.next-project').style.backgroundImage;
+
+			var $projectImage = document.createElement('div');
+			$projectImage.className = 'project-image';
+			$img = document.createElement('div');
+			$img.style.backgroundImage = background;
+			$img.className = 'image-preview';
+
+			$projectImage.appendChild($img);
+			window.scrollTo(0,0);
+			document.querySelector('#app').innerHTML = "";
+			document.querySelector('#app').appendChild($projectImage);
+			setTimeout(function() {
+				document.querySelector('#app').innerHTML  += data.html;
+				new Loader(function() {
+					addClass(document.querySelector('body'),'body-single')
+					CONTROLLER = new Project();
+				});
+			},500);
+
+		},1000);
+	},
+	projectToHome: function(number,data) {
+		var body = document.querySelector('body');
+		setTimeout(function() {
+			document.querySelector('.loader').style.opacity = 1;
+		},500);
+		setTimeout(function() {
+			if(hasClass(body,'body-single')) {
+				addClass(body,'body-home');
+				removeClass(body,'body-single');
+			}
+
+			document.querySelector('#app').innerHTML = data.html;
+			new Loader(function() {
+				CONTROLLER = new Home();
+			});
+		},1000);
 	}
 };
