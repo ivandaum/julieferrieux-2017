@@ -30,6 +30,7 @@ class Binder {
 							}
 						})
 					}
+
 					Transitions.hideProject(number);
 				}
 
@@ -37,7 +38,7 @@ class Binder {
 					data = JSON.parse(data);
 					if(data.class == 'body-single' && IS_HOME) {
 						Transitions.homeToProject(number,data);
-					} else if(data.class == 'body-home' && IS_HOME) {
+					} else if(data.class == 'body-home' && !IS_HOME) {
 						Transitions.projectToHome(number,data);
 					} else if(data.class == 'body-single' && !IS_HOME) {
 						Transitions.projectToProject(number,data);

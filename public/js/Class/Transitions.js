@@ -2,6 +2,7 @@ var Transitions = {
 	hideHome: function(number) {
 		CONTROLLER.unbind();
 		var body = document.querySelector('body');
+
 		if(hasClass(body,'body-home')) {
 			addClass(body,'body-single');
 			removeClass(body,'body-home');
@@ -24,16 +25,18 @@ var Transitions = {
 	},
 
 	hideProject: function(number) {
-		var body = document.querySelector('body');
 		var timeline = new TimelineMax({onComplete:function() {
 
-			if(hasClass(body,'body-single')) {
-				removeClass(body,'body-single');
-			}
+			setTimeout(function() {
+				var body = document.querySelector('body');
+				if(hasClass(body,'body-single')) {
+					removeClass(body,'body-single');
+				}
+			},1000);
 		}});
 		timeline
 			.call(function() {
-				new TweenMax.fromTo('.project-image',0.5,{height:'100vh'},{height:'0vh'});
+				new TweenMax.fromTo('.project-image',1,{height:'100vh'},{height:'0vh'});
 				new TweenMax.staggerFromTo('h1 span',1,
 					{paddingTop:'0px',ease:Quart.easeInOut},
 					{paddingTop:'80px',ease:Quart.easeInOut}
@@ -47,10 +50,13 @@ var Transitions = {
 					}
 				}
 			})
-			.to('.next-project-background',0.5,{width:'0',ease:Quart.easeInOut})
-			.staggerTo('.next-project p',0.5,{opacity:0},0.2)
 			.call(function() {
-				addClass(document.querySelector('.next-project-background'),'hide');
+				$nextButton = document.querySelector('.next-project-background');
+				if($nextButton) {
+					addClass($nextButton,'hide');
+					new TweenMax.to('.next-project-background',0.5,{width:'0',ease:Quart.easeInOut})
+					new TweenMax.staggerTo('.next-project p',0.5,{opacity:0},0.2)
+				}
 			});
 	},
 
@@ -93,15 +99,17 @@ var Transitions = {
 		},1000);
 	},
 	projectToHome: function(number,data) {
-		var body = document.querySelector('body');
 		setTimeout(function() {
 			document.querySelector('.loader').style.opacity = 1;
 		},500);
+
 		setTimeout(function() {
+			var body = document.querySelector('body');
 			if(hasClass(body,'body-single')) {
-				addClass(body,'body-home');
 				removeClass(body,'body-single');
 			}
+
+			addClass(body,'body-home');
 
 			document.querySelector('#app').innerHTML = data.html;
 			new Loader(function() {
