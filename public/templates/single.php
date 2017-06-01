@@ -5,7 +5,7 @@
     </div>
     <?php endif; ?>
 
-    <div class="section-container">
+    <div class="container">
         <div class="title" style="color:<?= $project['color'] ?>">
             <div class="number"><span><?php if($project['number'] < 10): ?>0<?php endif; ?><?= $project['number'] ?></span><div style="background-color:<?= $project['color'] ?>"></div></div>
             <h1><?= explodeTitle($project['title']) ?></h1>

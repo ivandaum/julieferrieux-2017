@@ -36,10 +36,13 @@ class ProjectFormator
         $formatedProject['color'] = get_field('color',$project->ID);
         $formatedProject['context'] = get_field('context',$project->ID);
 	    $formatedProject['image'] = get_field('image_cover',$project->ID);
-        $formatedProject['content'] = wpautop($project->post_content);
 
+	    $formatedProject['content'] = wpautop($project->post_content);
 	    $formatedProject['content'] = str_replace('<img','<div class="content-image"><img',$formatedProject['content']);
 	    $formatedProject['content'] = str_replace('/>','/></div>',$formatedProject['content']);
+	    $formatedProject['content'] = do_shortcode($formatedProject['content']);
+//	    $formatedProject['content'] = str_replace('<p></p>','',$formatedProject['content']);
+
 	    $nextPost = get_previous_post( true );
 
 	    if(is_int($key)) $formatedProject['number'] = $key+1;

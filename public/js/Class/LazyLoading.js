@@ -3,7 +3,7 @@ class LazyLoading {
 		this.container = container;
 		this.img = document.querySelectorAll(container + ' img');
 		this.offsetTop = window.innerHeight/4;
-		this.bind()
+		// this.bind()
 	}
 
 	bind() {

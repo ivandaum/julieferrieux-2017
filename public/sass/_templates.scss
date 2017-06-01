@@ -219,7 +219,7 @@ h1,h2,h3,h4,h5,h6 {
     margin:0 auto;
     width:auto;
     height:auto;
-    max-width:1000px;
+    max-width:$imgMaxWidth;
     max-height:600px;
     right:200px;
     left:200px;
@@ -237,7 +237,7 @@ h1,h2,h3,h4,h5,h6 {
   z-index:10;
   top:0;
   bottom:0;
-  left:50px;
+  left:100px;
   margin:auto;
   span {
     display:block;
@@ -272,9 +272,10 @@ h1,h2,h3,h4,h5,h6 {
   img {
     width:100%;
     height:auto;
-    margin:0;
     display:block;
-    opacity:0;
+    margin:auto;
+    max-width:$imgMaxWidth;
+    opacity:1;
     z-index:2;
     @include transition-css(opacity,1s);
   }
@@ -282,6 +283,9 @@ h1,h2,h3,h4,h5,h6 {
     position:relative;
     height:auto;
     width:auto;
+    margin:auto;
+    padding:0 125px;
+    margin-bottom: 50px;
     &:after {
       content:" ";
       display:block;

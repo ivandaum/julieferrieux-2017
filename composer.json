@@ -10,7 +10,8 @@
   "require": {},
   "autoload": {
     "files": [
-      "config/constants.php"
+      "config/constants.php",
+      "config/shortcodes.php"
     ],
     "psr-4": {
       "App\\": "app/"
