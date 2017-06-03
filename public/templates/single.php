@@ -10,6 +10,43 @@
             <div class="number"><span><?php if($project['number'] < 10): ?>0<?php endif; ?><?= $project['number'] ?></span><div style="background-color:<?= $project['color'] ?>"></div></div>
             <h1><?= explodeTitle($project['title']) ?></h1>
         </div>
+        <div class="project-intro">
+
+            <div style="color:<?= $project['color'] ?>" class="project-tags text-uppercase">
+                <?php foreach ($project['tags'] as $tag): ?>
+                    <p><?= $tag ?></p>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="project-intro-details">
+
+                <div>
+                    <?php if($project['context']): ?>
+                        <span style="color:<?= $project['color'] ?>">Contexte</span>
+                        <?= $project['context']; ?>
+                    <?php endif; ?>
+                </div>
+
+                <div>
+                    <?php if($project['date']): ?>
+                        <span style="color:<?= $project['color'] ?>">Date</span>
+                        <?= getMonth($project['date_month']); ?>
+                        <?= $project['date_year']; ?>
+                    <?php endif; ?>
+                </div>
+
+                <div style="color:<?= $project['color'] ?>">
+                    <?php if($project['intro']): ?>
+                        <?= $project['intro']; ?>
+                    <?php endif; ?>
+                </div>
+
+            </div>
+
+            <div class="scroll-info">
+                Scroll
+            </div>
+        </div>
     </div>
 
 

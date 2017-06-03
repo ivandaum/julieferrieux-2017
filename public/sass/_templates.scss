@@ -220,12 +220,98 @@ h1,h2,h3,h4,h5,h6 {
     width:auto;
     height:auto;
     max-width:$imgMaxWidth;
-    max-height:600px;
+    max-height:500px;
     right:200px;
     left:200px;
     bottom:0;
     top:100px;
     background-attachment:inherit;
+  }
+}
+
+
+.single .project-intro {
+
+  height:auto;
+  max-width:$imgMaxWidth;
+  margin:auto;
+  left:200px;
+  right:200px;
+  position:absolute;
+  bottom:0;
+  min-height:calc(100vh - 600px);
+  .project-tags {
+    overflow:hidden;
+    height:35px;
+    padding-top:35px;
+    margin:25px 0;
+    p {
+      display: inline;
+      font-size: 13px;
+      line-height: 35px;
+      letter-spacing:5px;
+      &:after {
+        content: " - ";
+        margin:0 10px;
+      }
+
+      &:last-child:after {
+        content: " ";
+      }
+    }
+  }
+  .project-intro-details {
+    display:flex;
+    flex-wrap: nowrap;
+    width:100%;
+    > div {
+      min-width:150px;
+      line-height:1.2rem;
+      font-size:0.8rem;
+      color:$grey;
+      p {
+        color:$grey;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        font-size:1rem;
+        margin-bottom:0.5rem;
+        color:inherit;
+      }
+      span {
+        font-weight:bold;
+        text-transform: uppercase;
+        font-size:0.65rem;
+        margin-bottom:10px;
+        letter-spacing:3px;
+        color:inherit;
+        display:block;
+      }
+    }
+  }
+
+  .scroll-info {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    color:$red;
+    text-transform: uppercase;
+    text-align:center;
+    font-size:0.6rem;
+    height:50px;
+    &:after {
+      content:" ";
+      width:1px;
+      height:30px;
+      bottom:0;
+      margin:auto;
+      position:absolute;
+      left:0;
+      right:0;
+      background:$red;
+      display:block;
+    }
   }
 }
 
@@ -269,6 +355,7 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 .single .single-content {
+  margin-top:20px;
   h1,h2,h3,h4,h5,h6 {
     font-size:3rem;
     line-height:3rem;
@@ -407,18 +494,19 @@ h1,h2,h3,h4,h5,h6 {
   height:100vh;
   width:500px;
   max-width:100%;
-  right:-100%;
+  right:-500px;
   top:0;
   position:fixed;
   z-index:200;
   color:$white;
-  @include transition-css(right);
+  @include transition-css(right,1s);
 
   &.active {
     right:0;
   }
   h3 {
     font-size:50px;
+    color:$white;
     margin-bottom:40px;
   }
   .contact-content {

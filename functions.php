@@ -24,5 +24,13 @@ function explodeTitle($title) {
 }
 
 
+function getMonth($key) {
+	$month = [
+		'Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'
+	];
+
+	return $month[$key + 1];
+}
+
 remove_filter('the_content', 'wpautop');
 remove_filter('the_excerpt', 'wpautop');

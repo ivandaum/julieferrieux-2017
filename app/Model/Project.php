@@ -38,7 +38,11 @@ class Project {
         $query['posts_per_page'] = 1;
 
         $builder = new \WP_Query($query);
-        return $builder->posts;
+
+        return [
+        	'post' => $builder->posts,
+	        'number' => $builder->current_post
+        ];
 
     }
 }

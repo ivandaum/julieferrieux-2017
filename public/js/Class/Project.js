@@ -13,6 +13,10 @@ class Project {
 
 		new TweenMax.fromTo('.title .number',1, {opacity:0},{opacity:1});
 
+		new TweenMax.fromTo('.project-tags',0.4,
+			{paddingTop:'35px'},
+			{paddingTop:'0px'}
+		);
 
 		if(document.querySelector('.next-project')) {
 			document.querySelector('.next-project a').addEventListener('mouseenter',function(e) {
