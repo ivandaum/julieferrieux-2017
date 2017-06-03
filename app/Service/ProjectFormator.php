@@ -24,41 +24,41 @@ class ProjectFormator
     static public function formatOne($project, $key = 0)
     {
 
-        $formatedProject = array();
-        $formatedProject['id'] = $project->ID;
-        $formatedProject['title'] = $project->post_title;
-        $formatedProject['category'] = get_the_category($project->ID)[0]->slug;
-        $formatedProject['link'] = get_permalink($project->ID);
-        $formatedProject['date'] = $project->post_date;
-        $formatedProject['date_year'] = date('Y',strtotime($project->post_date));
-        $formatedProject['slug'] = $project->post_name;
-        $formatedProject['description'] = $project->post_excerpt;
-        $formatedProject['color'] = get_field('color',$project->ID);
-        $formatedProject['context'] = get_field('context',$project->ID);
-	    $formatedProject['image'] = get_field('image_cover',$project->ID);
+        $f = array();
+        $f['id'] = $project->ID;
+        $f['title'] = $project->post_title;
+        $f['category'] = get_the_category($project->ID)[0]->slug;
+        $f['link'] = get_permalink($project->ID);
+        $f['date'] = $project->post_date;
+        $f['date_year'] = date('Y',strtotime($project->post_date));
+        $f['slug'] = $project->post_name;
+        $f['description'] = $project->post_excerpt;
+        $f['color'] = get_field('color',$project->ID);
+        $f['context'] = get_field('context',$project->ID);
+	    $f['image'] = get_field('image_cover',$project->ID);
 
-	    $formatedProject['content'] = wpautop($project->post_content);
-	    $formatedProject['content'] = str_replace('<img','<div class="content-image"><img',$formatedProject['content']);
-	    $formatedProject['content'] = str_replace('/>','/></div>',$formatedProject['content']);
-	    $formatedProject['content'] = do_shortcode($formatedProject['content']);
-//	    $formatedProject['content'] = str_replace('<p></p>','',$formatedProject['content']);
+	    $f['content'] = $project->post_content;
+	    $f['content'] = preg_replace('<img([\w\W]+?) />','div class="content-image"><img ${0}></div',$f['content']);
+	    $f['content'] = do_shortcode($f['content']);
+	    $f['content'] = str_replace('<p></p>','',$f['content']);
+	    $f['content'] = str_replace('<br>','',$f['content']);
 
 	    $nextPost = get_previous_post( true );
 
-	    if(is_int($key)) $formatedProject['number'] = $key+1;
+	    if(is_int($key)) $f['number'] = $key+1;
 
 	    $tags = wp_get_post_tags($project->ID);
         foreach ($tags as $tag) {
-            $formatedProject['tags'][] = $tag->name;
+            $f['tags'][] = $tag->name;
         }
 
         if($nextPost) {
-            $formatedProject['next_post']['link'] = get_permalink($nextPost->ID);
-            $formatedProject['next_post']['color'] = get_field('color',$nextPost->ID);
-            $formatedProject['next_post']['title'] = get_the_title($nextPost->ID);
-            $formatedProject['next_post']['image'] = get_field('image_cover',$nextPost->ID);
+            $f['next_post']['link'] = get_permalink($nextPost->ID);
+            $f['next_post']['color'] = get_field('color',$nextPost->ID);
+            $f['next_post']['title'] = get_the_title($nextPost->ID);
+            $f['next_post']['image'] = get_field('image_cover',$nextPost->ID);
         }
 
-        return $formatedProject;
+        return $f;
     }
 }

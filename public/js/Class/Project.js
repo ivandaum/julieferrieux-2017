@@ -32,5 +32,15 @@ class Project {
 
 			});
 		}
+
+		var sliders = document.querySelectorAll('.slider');
+
+		for(var a=0; a<sliders.length; a++) {
+			new Flickity(sliders[a],{
+				prevNextButtons: false,
+				cellSelector: '.content-image',
+				wrapAround: true
+			});
+		}
 	}
 }
