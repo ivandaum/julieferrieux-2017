@@ -1,7 +1,6 @@
 <div class="home container">
 
 	<ul class="projects-menu">
-		<div class="project-menu-position"></div>
 		<?php foreach($projects as $project): ?>
 			<li class="project-menu-<?= $project['number'] ?> <?php if($project['number'] == 1):?> active<?php endif; ?>">
 				<span></span>
@@ -24,6 +23,8 @@
 							<?php endforeach; ?>
 						</div>
 					</div>
+
+					<a data-projectnumber="<?= $project['number'] ?>"  style="color:<?= $project['color'] ?>" href="<?= $project['link'] ?>" class="see-project ajax-link">Voir le projet</a>
 			</div>
 		<?php endforeach; ?>
 	</div>

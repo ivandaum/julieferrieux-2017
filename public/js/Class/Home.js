@@ -89,7 +89,7 @@ class Home {
 			_this.slideImageUp(next);
 		}
 
-		this.moveDot(n);
+		// this.moveDot(n);
 		this.slideTextUp(c);
 		this.slideTextDown(n);
 		this.slideTagsUp(n);

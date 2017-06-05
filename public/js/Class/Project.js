@@ -17,6 +17,10 @@ class Project {
 			{paddingTop:'35px'},
 			{paddingTop:'0px'}
 		);
+		new TweenMax.fromTo('.project-intro',0.4,
+			{opacity:'0'},
+			{opacity:'1'}
+		);
 
 		if(document.querySelector('.next-project')) {
 			document.querySelector('.next-project a').addEventListener('mouseenter',function(e) {

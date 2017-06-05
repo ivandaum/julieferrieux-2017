@@ -12,5 +12,28 @@
   }
   &.nav-projects {
     left:100px;
+    pointer-events: auto;
+    @include transition-css();
   }
+}
+
+
+.logo {
+  width:130px;
+  height:130px;
+  display:block;
+  margin:0;
+  left:100px;
+  top:50px;
+  position:absolute;
+  z-index:20;
+  @include transition-css();
+}
+.body-single .logo {
+  opacity:0;
+}
+
+.body-home .nav-projects {
+  opacity:0;
+  pointer-events: none;
 }

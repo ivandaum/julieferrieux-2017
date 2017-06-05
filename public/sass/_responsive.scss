@@ -1,6 +1,131 @@
 @include breakpoint($small-desktop) {
+  .single .project-intro {
+    left:50px;
+    right:50px;
+  }
+  .scroll-info {
+    display:none;
+  }
 }
 
 @include breakpoint($phone) {
+  .logo {
+    height:50px;
+    width:50px;
+    top:20px;
+    left:20px;
+  }
+  .nav-button.nav-about {
+    top:20px;
+    right:20px;
+  }
+  .nav-button.nav-projects {
+    top:20px;
+    left:20px;
+  }
+  .projects-menu {
+    left:50px;
+  }
+  .project .project-content {
+    left:80px;
+  }
+  .project h2 {
+    font-size:45px;
+    line-height: 45px;
+  }
+  .project .see-project {
+    display:none;
+  }
+  .project .project-tags p {
+    font-size:10px;
+    letter-spacing:2px;
+  }
+  .project h2 span {
+    height:45px;
+  }
 
+  .single .title {
+    font-size: 50px;
+    line-height: 50px;
+    left:0;
+    width: 90%;
+    height: auto;
+    position: relative;
+    margin:auto;
+    padding-top: 100px;
+  }
+  .single .title span {
+    line-height:50px;
+    height: 50px;
+  }
+  .single .project-intro {
+    height: auto;
+    max-width: 1350px;
+    margin: 0;
+    left: 0;
+    right: 0;
+    position: relative;
+    bottom: 0;
+    opacity: 0;
+    min-height: auto;
+    width: 90%;
+    z-index: 10;
+    margin-top: 30vh;
+  }
+  .single .project-intro .project-tags {
+    margin: 15px auto;
+    width: 90%;
+    p {
+      letter-spacing:1px;
+    }
+  }
+  .single .project-intro .project-intro-details {
+    display:block;
+    width:90%;
+    margin:auto;
+  }
+  .single .project-intro .project-intro-details>div {
+    display:block;
+    margin-bottom: 20px;
+    span {
+      margin-bottom:5px;
+    }
+  }
+  .single .project-intro .scroll-info {
+    display:none;
+  }
+  .single .single-content .content-image {
+    width: 90%;
+    margin: 15px auto;
+    padding:0;
+  }
+  .single .single-content .content-full {
+    display:block;
+  }
+  .single .single-content .content-full .content-text {
+    padding:0;
+    display:block;
+    width:90%;
+    margin:auto;
+    h1,h2,h3,h4,h5,h6 {
+      font-size:15px;
+      line-height:15px;
+    }
+  }
+  .single .next-project a .next-project-title {
+    font-size:50px;
+    line-height:50px;
+  }
+  .body-single .project-image {
+    height:70vh;
+  }
+  .body-single .project-image .image-preview {
+    right: 50px;
+    left: 50px;
+    bottom: 0;
+    top: 50px;
+  }
+  .contact .contact-content {
+    padding-top:15vh;
+  }
 }

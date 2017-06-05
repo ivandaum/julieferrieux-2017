@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 //
 //add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 300, 600, true );
-add_image_size( 'image-preview', 500, 9999 );
+add_image_size( 'image-post', 2048, 9999 );
 
 //remove_filter( 'the_content', 'wpautop' );
 //remove_filter( 'the_excerpt', 'wpautop' );

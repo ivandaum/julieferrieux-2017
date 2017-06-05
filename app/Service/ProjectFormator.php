@@ -47,7 +47,7 @@ class ProjectFormator
 
 	    $nextPost = get_previous_post( true );
 
-	    if(is_int($key)) $f['number'] = $key;
+	    if(is_int($key)) $f['number'] = $key+1;
 
 	    $tags = wp_get_post_tags($project->ID);
         foreach ($tags as $tag) {
