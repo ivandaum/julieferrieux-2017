@@ -18,6 +18,8 @@ class Home {
 			_this.flagSwitching = false;
 
 			document.addEventListener('mousewheel', _this.switchSection)
+			document.addEventListener('touchmove', _this.switchSection)
+			document.addEventListener('wheel', _this.switchSection)
 
 			_this.activeSection = 0;
 			_this.showFirst(_this.activeSection);
@@ -26,13 +28,36 @@ class Home {
 	}
 	unbind() {
 		document.removeEventListener("mousewheel",CONTROLLER.switchSection);
+		document.removeEventListener("wheel",CONTROLLER.switchSection);
+		document.removeEventListener("touchmove",CONTROLLER.switchSection);
 	}
+	getMobileDirection(e) {
+
+		var y = e.changedTouches[0].screenY;
+
+		if(this.firstMoves != 'undefined') {
+			if(y > this.firstMoves) {
+				this.direction = 'next';
+			} else {
+				this.direction = 'previous';
+			}
+		}
+
+		this.firstMoves = y;
+	}
+
 	switchSection(e) {
 		var _this = CONTROLLER;
 
 		if(!IS_HOME) return;
 
-		_this.direction = e.deltaY < 0 ? 'previous' : 'next';
+		if(typeof e.changedTouches != 'undefined') {
+			_this.getMobileDirection(e)
+		} else {
+			_this.direction = e.deltaY < 0 ? 'previous' : 'next';
+		}
+
+		if(typeof this.direction != 'undefined') return;
 
 		if(_this.flagSwitching) return;
 
