@@ -81,12 +81,12 @@ class Home {
 			new TweenMax.set(next.image,{zIndex:2,top:'0%',bottom:'0%'});
 			new TweenMax.set(current.image,{zIndex:5});
 
-			_this.slideImageDown(current);
+			_this.slideImageDown(current,next);
 		} else {
 			new TweenMax.set(current.image,{zIndex:2});
 			new TweenMax.set(next.image,{zIndex:5});
 
-			_this.slideImageUp(next);
+			_this.slideImageUp(current,next);
 		}
 
 		// this.moveDot(n);
@@ -113,21 +113,42 @@ class Home {
 		new TweenMax.set(next.image,{zIndex:5});
 
 		this.slideTextDown(n);
-		this.slideImageUp(next);
-		this.slideTagsUp(n);
-	}
 
-	slideImageUp(el) {
-		new TweenMax.fromTo(el.image,1,
+		new TweenMax.fromTo(next.image,1,
 			{top:'100%', bottom:'0%',ease:getEase()},
 			{top:'0%' ,bottom:'0%',ease:getEase()}
 		);
+
+		this.slideTagsUp(n);
 	}
-	slideImageDown(el) {
-		new TweenMax.fromTo(el.image, 1,
+
+	slideImageUp(current,next) {
+		new TweenMax.fromTo(current.image,1,
+			{top:'0%', bottom:'0%',ease:getEase()},
+			{top:'-100%' ,bottom:'0%',ease:getEase()}
+		);
+
+		if(typeof next != 'undefined') {
+			new TweenMax.fromTo(next.image, 1,
+				{top: '100%', bottom: '0%', ease: getEase()},
+				{top: '0%', bottom: '0%', ease: getEase()}
+			);
+		}
+
+	}
+	slideImageDown(next,current) {
+		new TweenMax.fromTo(next.image, 1,
 			{top: '0', bottom: '0%', ease: getEase()},
 			{top: '100%', bottom: '0%', ease: getEase()}
 		);
+
+		if(typeof current != 'undefined') {
+			new TweenMax.fromTo(current.image, 1,
+				{top: '-100%', bottom: '0%', ease: getEase()},
+				{top: '0%', bottom: '0%', ease: getEase()}
+			);
+		}
+
 	}
 
 	slideTextDown(n) {
