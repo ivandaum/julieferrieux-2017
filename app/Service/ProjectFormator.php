@@ -47,6 +47,11 @@ class ProjectFormator
 
 	    $nextPost = get_previous_post( true );
 
+
+	    if(!$nextPost) {
+		    $lastPost = get_posts("post_type=post&numberposts=2");
+		    $nextPost = $lastPost[0];
+	    }
 	    if(is_int($key)) $f['number'] = $key+1;
 
 	    $tags = wp_get_post_tags($project->ID);
@@ -54,12 +59,10 @@ class ProjectFormator
             $f['tags'][] = $tag->name;
         }
 
-        if($nextPost) {
-            $f['next_post']['link'] = get_permalink($nextPost->ID);
-            $f['next_post']['color'] = get_field('color',$nextPost->ID);
-            $f['next_post']['title'] = get_the_title($nextPost->ID);
-            $f['next_post']['image'] = get_field('image_cover',$nextPost->ID);
-        }
+        $f['next_post']['link'] = get_permalink($nextPost->ID);
+        $f['next_post']['color'] = get_field('color',$nextPost->ID);
+        $f['next_post']['title'] = get_the_title($nextPost->ID);
+        $f['next_post']['image'] = get_field('image_cover',$nextPost->ID);
 
         return $f;
     }

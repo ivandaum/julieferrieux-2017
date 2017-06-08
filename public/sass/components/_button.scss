@@ -15,6 +15,22 @@
     pointer-events: auto;
     @include transition-css();
   }
+
+  &:after {
+    content: " ";
+    height:1px;
+    width:0%;
+    background:$red;
+    display:block;
+    position:absolute;
+    left:0;
+    bottom:-3px;
+    @include transition-css(width,0.5s);
+  }
+
+  &:hover:after {
+    width:100%;
+  }
 }
 
 

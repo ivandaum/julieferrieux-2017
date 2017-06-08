@@ -12,7 +12,7 @@ var Transitions = {
 		timeline
 			.staggerFromTo('.project-title-' + number + ' span',0.5,
 				{paddingTop:'0px',ease:Quart.easeInOut},
-				{paddingTop:'65px',ease:Quart.easeInOut}
+				{paddingTop:'75px',ease:Quart.easeInOut}
 				,0.1)
 			.fromTo('.project-tags-' + number,0.4,
 				{paddingTop:'0px'},

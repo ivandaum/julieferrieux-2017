@@ -26,17 +26,16 @@
 <div class="loader">
     <div class="logo-loader">
         <div class="loader-overlay"></div>
-        <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-        <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
-<style type="text/css">
-    .st0{fill:#231F20;}
-    .st1{fill:none;stroke:#231F20;stroke-width:0.7484;stroke-miterlimit:10;}
-    .st2{fill:#F86759;}
-    .st3{fill:#919191;stroke:#231F20;stroke-width:0.7484;stroke-miterlimit:10;}
-    .st4{fill:#FFFFFF;}
-    .st5{fill:#E4634E;}
-</style>
+                <style type="text/css">
+                    .st0{fill:#231F20;}
+                    .st1{fill:none;stroke:#231F20;stroke-width:0.7484;stroke-miterlimit:10;}
+                    .st2{fill:#F86759;}
+                    .st3{fill:#919191;stroke:#231F20;stroke-width:0.7484;stroke-miterlimit:10;}
+                    .st4{fill:#FFFFFF;}
+                    .st5{fill:#E4634E;}
+                </style>
             <g>
                 <path class="st2" d="M16.7,175.7l-1.2-0.8c-0.2-0.2-0.2-0.4-0.1-0.6c0.2-0.3,0.5-0.7,0.4-1.4c-0.1-0.7-0.9-1.4-2.2-1.2l-9,1.4
 		c-0.2,0-0.4-0.1-0.4-0.3L4,171.1c0-0.2,0.1-0.4,0.3-0.4l9-1.4c2.7-0.4,4.5,1.1,4.8,3.3c0.3,1.7-0.6,2.7-0.9,3.1
@@ -121,7 +120,7 @@
     </div>
 </div>
 <div class="navigation">
-    <a href="/" class="nav-button nav-projects ajax-link text-uppercase">Projects</a>
+    <a href="/" class="nav-button nav-projects ajax-link text-uppercase">Projets</a>
     <div class="logo"><img src="<?= PUBLIC_PATH ?>/images/logo.svg" alt=""></div>
     <a href="#" class="nav-button nav-about text-uppercase">Contact</a>
 </div>

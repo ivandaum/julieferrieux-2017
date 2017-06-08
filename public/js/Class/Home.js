@@ -148,13 +148,13 @@ class Home {
 	}
 
 	slideImageUp(current,next) {
-		new TweenMax.fromTo(current.image,1,
+		new TweenMax.fromTo(current.image,1.5,
 			{top:'0%', bottom:'0%',ease:getEase()},
 			{top:'-100%' ,bottom:'0%',ease:getEase()}
 		);
 
 		if(typeof next != 'undefined') {
-			new TweenMax.fromTo(next.image, 1,
+			new TweenMax.fromTo(next.image, 1.5,
 				{top: '100%', bottom: '0%', ease: getEase()},
 				{top: '0%', bottom: '0%', ease: getEase()}
 			);
@@ -162,13 +162,13 @@ class Home {
 
 	}
 	slideImageDown(next,current) {
-		new TweenMax.fromTo(next.image, 1,
+		new TweenMax.fromTo(next.image, 1.5,
 			{top: '0', bottom: '0%', ease: getEase()},
 			{top: '100%', bottom: '0%', ease: getEase()}
 		);
 
 		if(typeof current != 'undefined') {
-			new TweenMax.fromTo(current.image, 1,
+			new TweenMax.fromTo(current.image, 1.5,
 				{top: '-100%', bottom: '0%', ease: getEase()},
 				{top: '0%', bottom: '0%', ease: getEase()}
 			);
@@ -178,14 +178,14 @@ class Home {
 
 	slideTextDown(n) {
 		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
-			{paddingTop:'65px',ease:getEase()},
+			{paddingTop:'75px',ease:getEase()},
 			{paddingTop:'0',ease:getEase()}
 		,0.1);
 	}
 	slideTextUp(n) {
 		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
 			{paddingTop:'0',ease:getEase()},
-			{paddingTop:'65px',ease:getEase()}
+			{paddingTop:'75px',ease:getEase()}
 		,0.1);
 	}
 

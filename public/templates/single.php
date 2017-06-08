@@ -35,7 +35,7 @@
                     <?php endif; ?>
                 </div>
 
-                <div style="color:<?= $project['color'] ?>">
+                <div style=";color:<?= $project['color'] ?>">
                     <?php if($project['intro']): ?>
                         <?= $project['intro']; ?>
                     <?php endif; ?>
@@ -43,9 +43,6 @@
 
             </div>
 
-            <div class="scroll-info">
-                Scroll
-            </div>
         </div>
     </div>
 
@@ -60,7 +57,7 @@
     <div class="container next-project" data-nextimage="<?= $project['next_post']['image']['url'] ?>" style="background-image:url(<?= $project['next_post']['image']['url'] ?>)">
         <a href="<?= $project['next_post']['link'] ?>" class="ajax-link link-next-project">
             <p class="next-project-title"><?= $project['next_post']['title'] ?></p>
-            <p class="text-uppercase">Projet suivant</p>
+            <p class="text-uppercase line-before">Projet suivant</p>
         </a>
         <div class="next-project-background container" style="background-color:<?= $project['color'] ?>" data-currentcolor="<?= $project['color'] ?>" data-nextcolor="<?= $project['next_post']['color'] ?>"></div>
     </div>
