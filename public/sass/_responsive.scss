@@ -10,8 +10,8 @@
 
 @include breakpoint($phone) {
   .logo {
-    height:50px;
-    width:50px;
+    height:70px;
+    width:70px;
     top:20px;
     left:20px;
   }
@@ -127,9 +127,25 @@
   }
   .contact .contact-content {
     padding-top:15vh;
+    width: 80%;
+  }
+  .contact h3 {
+    font-size:35px;
   }
 }
 
 @include breakpoint($phone-small) {
-  
+
+  .projects-menu {
+    left:20px;
+    .project-number {
+      display:none !important;
+    }
+  }
+  .project .project-content {
+    left:50px;
+  }
+  .project h2 a {
+    opacity:1;
+  }
 }

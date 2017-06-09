@@ -131,7 +131,7 @@
         <div class="content">
             <?= $about['content'] ?>
             <div class="separator"></div>
-            <b><a href="mailto:<?= $about['email'] ?>"><?= $about['email'] ?></a></b>
+            <b><a class="contact-mail" href="mailto:<?= $about['email'] ?>"><?= $about['email'] ?></a></b>
         </div>
         <ul class="networks">
             <?php foreach($about['networks'] as $name => $link): ?>

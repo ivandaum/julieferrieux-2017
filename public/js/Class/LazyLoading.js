@@ -2,8 +2,8 @@ class LazyLoading {
 	constructor(container) {
 		this.container = container;
 		this.img = document.querySelectorAll(container + ' img');
-		this.offsetTop = window.innerHeight/4;
-		// this.bind()
+		this.offsetTop = window.innerHeight/2;
+		this.bind()
 	}
 
 	bind() {
@@ -26,8 +26,12 @@ class LazyLoading {
 		for(var a=0; a<this.img.length; a++) {
 			img = this.img[a];
 
-			if(img.offsetTop <= top - this.offsetTop) {
+			if(hasClass(img,'faded')) continue;
+
+			if(img.getBoundingClientRect().top <= this.offsetTop) {
 				img.style.opacity = 1;
+				new TweenMax.fromTo(img,1,{transform:'translate(0,150px)'},{transform:'translate(0,0px)'});
+				addClass(img,'faded')
 			}
 		}
 

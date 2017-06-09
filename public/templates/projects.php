@@ -2,8 +2,8 @@
 
 	<ul class="projects-menu">
 		<?php foreach($projects as $project): ?>
-			<li class="project-menu-<?= $project['number'] ?> <?php if($project['number'] == 1):?> active<?php endif; ?>">
-				<span></span>
+			<li style="height:<?= 170 / (count($projects) - 1) ?>px;" class="project-menu-<?= $project['number'] ?> <?php if($project['number'] == 1):?> active<?php endif; ?>">
+				<span  data-projectnumber="<?= $project['number'] ?>"></span>
 				<div class="project-number project-number-<?= $project['number'] ?>" style="color:<?= $project['color'] ?>">
 					<?php if($project['number'] < 10): ?>0<?php endif; ?><?= $project['number'] ?>
 				</div>

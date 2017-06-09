@@ -69,7 +69,6 @@ class Loader {
 		}
 
 		var percent = 50 * (loaded / this.images.length);
-		console.log((loaded / this.images.length));
 		this.updateLogo(50 + percent);
 
 		if(loaded >= this.images.length) {

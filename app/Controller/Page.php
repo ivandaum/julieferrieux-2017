@@ -30,7 +30,7 @@ class Page extends Controller {
         $id = $this->post->ID;
         $model = new Project();
         $project = $model::findById($id);
-        $project = ProjectFormator::formatOne($project['post'][0],$project['number']);
+        $project = ProjectFormator::formatOne($project['post'][0]);
         $category = get_category_by_slug($project['category']);
         self::render('single',[
             'project' => $project,

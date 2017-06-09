@@ -25,6 +25,20 @@ class Home {
 			_this.showFirst(_this.activeSection);
 		});
 
+		var dots = document.querySelectorAll('.projects-menu span');
+		for(var a=0; a<dots.length; a++) {
+			dots[a].addEventListener('click',function(e) {
+				var section = this.dataset.projectnumber;
+				_this.jumpToSection(section);
+			})
+		}
+
+		document.querySelector('.navigation .logo').addEventListener('click',function() {
+			if(_this.activeSection != 0) {
+				_this.jumpToSection(1);
+			}
+		});
+
 	}
 	unbind() {
 		document.removeEventListener("mousewheel",CONTROLLER.switchSection);
@@ -80,6 +94,19 @@ class Home {
 
 		_this.animate(_this.activeSection,nextSection);
 		_this.activeSection = nextSection;
+	}
+
+	jumpToSection(number) {
+		if(this.flagSwitching) return;
+		number = number-1;
+		if(number > this.activeSection) {
+			this.direction = 'next';
+		} else {
+			this.direction = 'previous';
+		}
+
+		this.animate(this.activeSection,number);
+		this.activeSection = number;
 	}
 
 	getSectionElements(number) {
@@ -148,13 +175,13 @@ class Home {
 	}
 
 	slideImageUp(current,next) {
-		new TweenMax.fromTo(current.image,1.5,
+		new TweenMax.fromTo(current.image,1,
 			{top:'0%', bottom:'0%',ease:getEase()},
 			{top:'-100%' ,bottom:'0%',ease:getEase()}
 		);
 
 		if(typeof next != 'undefined') {
-			new TweenMax.fromTo(next.image, 1.5,
+			new TweenMax.fromTo(next.image, 1,
 				{top: '100%', bottom: '0%', ease: getEase()},
 				{top: '0%', bottom: '0%', ease: getEase()}
 			);
@@ -162,13 +189,13 @@ class Home {
 
 	}
 	slideImageDown(next,current) {
-		new TweenMax.fromTo(next.image, 1.5,
+		new TweenMax.fromTo(next.image, 1,
 			{top: '0', bottom: '0%', ease: getEase()},
 			{top: '100%', bottom: '0%', ease: getEase()}
 		);
 
 		if(typeof current != 'undefined') {
-			new TweenMax.fromTo(current.image, 1.5,
+			new TweenMax.fromTo(current.image, 1,
 				{top: '-100%', bottom: '0%', ease: getEase()},
 				{top: '0%', bottom: '0%', ease: getEase()}
 			);
@@ -177,13 +204,13 @@ class Home {
 	}
 
 	slideTextDown(n) {
-		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
+		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.4,
 			{paddingTop:'75px',ease:getEase()},
 			{paddingTop:'0',ease:getEase()}
 		,0.1);
 	}
 	slideTextUp(n) {
-		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.5,
+		new TweenMax.staggerFromTo('.project-title-' + n + ' span',0.6,
 			{paddingTop:'0',ease:getEase()},
 			{paddingTop:'75px',ease:getEase()}
 		,0.1);

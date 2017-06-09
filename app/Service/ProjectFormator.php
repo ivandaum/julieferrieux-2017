@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Model\Project;
 
 class ProjectFormator
 {
@@ -21,7 +22,7 @@ class ProjectFormator
     }
 
 
-    static public function formatOne($project, $key = 0)
+    static public function formatOne($project, $key = false)
     {
 
         $f = array();
@@ -40,7 +41,7 @@ class ProjectFormator
 	    $f['intro'] = get_field('intro',$project->ID);
 
 	    $f['content'] = $project->post_content;
-	    $f['content'] = preg_replace('<img([\w\W]+?) />','div class="content-image"><img ${0}></div',$f['content']);
+	    $f['content'] = preg_replace('<img([\w\W]+?) />','div class="content-image"><${0}></div',$f['content']);
 	    $f['content'] = do_shortcode($f['content']);
 	    $f['content'] = str_replace('<p></p>','',$f['content']);
 	    $f['content'] = str_replace('<br>','',$f['content']);
@@ -52,7 +53,17 @@ class ProjectFormator
 		    $lastPost = get_posts("post_type=post&numberposts=2");
 		    $nextPost = $lastPost[0];
 	    }
-	    if(is_int($key)) $f['number'] = $key+1;
+	    if(is_int($key))  {
+		    $f['number'] = $key+1;
+	    } else {
+		    $posts = Project::getAll();
+		    foreach($posts as $k => $p) {
+			    if($f['id'] == $p->ID) {
+				    $f['number'] = $k+1;
+				    break;
+			    }
+		    }
+	    }
 
 	    $tags = wp_get_post_tags($project->ID);
         foreach ($tags as $tag) {

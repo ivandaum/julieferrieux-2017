@@ -7,7 +7,7 @@ class Project {
 		new LazyLoading('.single-content');
 
 		new TweenMax.staggerFromTo('h1 span',1,
-			{paddingTop:'80px',ease:Quart.easeInOut},
+			{paddingTop:'100px',ease:Quart.easeInOut},
 			{paddingTop:'0px',ease:Quart.easeInOut}
 			,0.1);
 

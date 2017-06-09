@@ -39,7 +39,7 @@ var Transitions = {
 				new TweenMax.fromTo('.project-image',1,{height:'100vh'},{height:'0vh'});
 				new TweenMax.staggerFromTo('h1 span',1,
 					{paddingTop:'0px',ease:Quart.easeInOut},
-					{paddingTop:'80px',ease:Quart.easeInOut}
+					{paddingTop:'100px',ease:Quart.easeInOut}
 					,0.1);
 
 				new TweenMax.fromTo('.title .number',1, {opacity:1},{opacity:0});

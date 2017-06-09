@@ -156,34 +156,30 @@ h1,h2,h3,h4,h5,h6 {
   bottom:0;
   z-index:50;
   width:10px;
-  padding-bottom:70px;
+  padding-bottom:80px;
   display:block;
   &:after {
-    content:" ";
-    width:1px;
-    left:0;
-    right:0;
-    margin:0 auto;
-    height:100%;
-    position:absolute;
-    display:block;
-    background:$red;
-    top:0;
+    content: " ";
+    background: $red;
+    width: 1px;
+    height:auto;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 175px;
     bottom:0;
-    z-index:5;
   }
-
   li {
     display:block;
     width:10px;
     height:10px;
-    margin-bottom:30px;
     position: relative;
 
     span {
       border-radius:50%;
       border:1px solid $red;
-      background: $background;
       display: block;
       width:5px;
       height:5px;
@@ -192,27 +188,31 @@ h1,h2,h3,h4,h5,h6 {
       left:0;
       right:0;
       z-index:10;
+      cursor:pointer;
       margin:auto;
       @include transition-css(all);
-      &:after {
-        content: " ";
-        background: red;
-        width: 1px;
-        height: 35px;
-        display: block;
-        /* margin-top: 3px; */
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: auto;
-        margin-top: 4px;
-      }
+    }
+    &:after {
+      content: " ";
+      background: $red;
+      width: 1px;
+      height:auto;
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 4px;
+      bottom:0;
     }
 
     &.active .project-number {
       opacity:1;
     }
 
+    &:hover span {
+      background:$red;
+    }
     &.active span {
       width:10px;
       height:10px;
@@ -234,7 +234,7 @@ h1,h2,h3,h4,h5,h6 {
     }
 
     &:last-child {
-      margin-bottom:0;
+      height:0 !important;
     }
   }
 }
@@ -396,9 +396,9 @@ h1,h2,h3,h4,h5,h6 {
   span {
     display:block;
     overflow:hidden;
-    height:80px;
+    height:100px;
     width:100%;
-    padding-top:80px;
+    padding-top:100px;
     line-height:100px;
   }
   h1 {
@@ -588,6 +588,23 @@ h1,h2,h3,h4,h5,h6 {
     padding-top:25vh;
     height: 95vh;
     position: relative;
+  }
+  .contact-mail {
+    position:relative;
+    &:after {
+      content: " ";
+      position: absolute;
+      height: 2px;
+      width: 0;
+      left:0;
+      background: #fff;
+      display: block;
+      bottom: -8px;
+      @include transition-css();
+    }
+    &:hover:after {
+      width:100%;
+    }
   }
   .close-contact {
     color:$white;
