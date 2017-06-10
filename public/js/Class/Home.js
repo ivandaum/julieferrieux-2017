@@ -15,6 +15,8 @@ class Home {
 		this.sections = document.querySelectorAll('.'+this.className.project);
 		this.preload(function() {
 			document.querySelector('.loader').style.opacity = 0;
+			document.querySelector('.logo-overflow').style.height = '100%';
+
 			_this.flagSwitching = false;
 
 			document.addEventListener('mousewheel', _this.switchSection)

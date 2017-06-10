@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
 var babel = require('gulp-babel');
+var uglify = require('gulp-uglify');
 
 DEST_DIR = './public/compressed/';
 JS_FILE = [
@@ -25,8 +26,9 @@ function onError(onError) {
 }
 gulp.task('compile:js', function () {
     gulp.src(JS_FILE)
-        .pipe(babel())
+        .pipe(babel({ presets: ["env"] }))
         .pipe(concat('/main.min.js'))
+        .pipe(uglify())
         .pipe(gulp.dest(DEST_DIR));
 });
 

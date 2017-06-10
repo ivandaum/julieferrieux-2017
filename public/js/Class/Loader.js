@@ -6,7 +6,6 @@ class Loader {
 		var _this = this;
 
 		this.getImg();
-		new TweenMax.to('.loader-overlay',0.2,{height:'130px'});
 
 		this.interval = setInterval(function() {
 			_this.loadImg();
@@ -24,6 +23,7 @@ class Loader {
 				clearInterval(_this.interval);
 				setTimeout(function() {
 					callback();
+
 				},1000);
 			}
 
@@ -37,8 +37,7 @@ class Loader {
 
 		var height = 130;
 		var pixels = height - (height *(this.percentLoaded/100));
-		new TweenMax.to('.loader-overlay',0.4,{height:pixels+'px'});
-
+		document.querySelector('.logo-overflow').style.height = pixels + 'px';
 	}
 
 	getImg() {

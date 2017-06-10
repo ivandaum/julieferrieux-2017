@@ -4,6 +4,8 @@ class Project {
 		var binder = new Binder();
 		binder.link('#app .ajax-link');
 		document.querySelector('.loader').style.opacity = 0;
+		document.querySelector('.logo-overflow').style.height = '100%';
+
 		new LazyLoading('.single-content');
 
 		new TweenMax.staggerFromTo('h1 span',1,
