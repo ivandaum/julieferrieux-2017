@@ -51,8 +51,8 @@ var Transitions = {
 				}
 			})
 			.call(function() {
-				$nextButton = document.querySelector('.next-project-background');
-				if($nextButton) {
+				var $nextButton = document.querySelector('.next-project-background');
+				if(typeof $nextButton != 'undefined') {
 					addClass($nextButton,'hide');
 					new TweenMax.to('.next-project-background',0.5,{width:'0',ease:Quart.easeInOut})
 					new TweenMax.staggerTo('.next-project p',0.5,{opacity:0},0.2)
@@ -80,7 +80,7 @@ var Transitions = {
 
 			var $projectImage = document.createElement('div');
 			$projectImage.className = 'project-image';
-			$img = document.createElement('div');
+			var $img = document.createElement('div');
 			$img.style.backgroundImage = background;
 			$img.className = 'image-preview';
 
