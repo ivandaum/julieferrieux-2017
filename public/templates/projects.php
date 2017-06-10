@@ -24,6 +24,11 @@
 						</div>
 					</div>
 
+					<?php
+						$number = $project['number'] +1;
+						if($number == count($projects) + 1)  $number = 1;
+					?>
+					<div data-projectnumber="<?= $number ?>" class="arrow-next-project"></div>
 					<a data-projectnumber="<?= $project['number'] ?>"  style="color:<?= $project['color'] ?>" href="<?= $project['link'] ?>" class="see-project ajax-link">Voir le projet</a>
 			</div>
 		<?php endforeach; ?>

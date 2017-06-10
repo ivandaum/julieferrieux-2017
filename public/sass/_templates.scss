@@ -72,7 +72,7 @@ h1,h2,h3,h4,h5,h6 {
       color:inherit;
       display:block;
       opacity:0.6;
-      @include transition-css(opacity,0.5s);
+      @include transition-linear-css(opacity,0.5s);
     }
     a:hover {
       opacity:1;
@@ -146,6 +146,23 @@ h1,h2,h3,h4,h5,h6 {
     }
     &:hover:after {
       width:100%;
+    }
+  }
+  .arrow-next-project {
+    height:50px;
+    width:50px;
+    background:url(/wp-content/themes/julieferrieux-2017/public/images/arrow.png) no-repeat center center;
+    position:absolute;
+    z-index:15;
+    bottom:60px;
+    left:0;
+    cursor:pointer;
+    right:0;
+    margin:auto;
+    opacity:0.3;
+    @include transition-linear-css();
+    &:hover {
+      opacity:1;
     }
   }
 }

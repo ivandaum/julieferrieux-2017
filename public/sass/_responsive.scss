@@ -80,15 +80,20 @@
     }
   }
   .single .project-intro .project-intro-details {
-    display:block;
-    width:90%;
-    margin:auto;
+    display: flex;
+    width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
   }
   .single .project-intro .project-intro-details>div {
     display:block;
     margin-bottom: 20px;
+    min-width:50%;
     span {
       margin-bottom:5px;
+    }
+    &:last-child {
+      max-width:100%;
     }
   }
   .single .project-intro .scroll-info {
@@ -131,6 +136,15 @@
   }
   .contact h3 {
     font-size:35px;
+  }
+  .project .arrow-next-project {
+    right:40px;
+    left:auto;
+    opacity:1;
+    height:30px;
+    width:30px;
+    background-size:100% auto;
+    margin:0;
   }
 }
 

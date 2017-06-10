@@ -25,7 +25,7 @@ class Home {
 			_this.showFirst(_this.activeSection);
 		});
 
-		var dots = document.querySelectorAll('.projects-menu span');
+		var dots = document.querySelectorAll('.projects-menu span, .arrow-next-project');
 		for(var a=0; a<dots.length; a++) {
 			dots[a].addEventListener('click',function(e) {
 				var section = this.dataset.projectnumber;
