@@ -9,9 +9,11 @@
   font-weight: bold;
   &.nav-about {
     right:100px;
+    width: 62px;
   }
   &.nav-projects {
     left:100px;
+    width:61px;
     pointer-events: auto;
     @include transition-css();
   }
@@ -24,7 +26,7 @@
     display:block;
     position:absolute;
     left:0;
-    bottom:-3px;
+    bottom:-6px;
     @include transition-css(width,0.5s);
   }
 

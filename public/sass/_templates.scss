@@ -50,18 +50,22 @@ h1,h2,h3,h4,h5,h6 {
       fill:$red;
     }
   }
-  .logo-overflow {
-    content:" ";
-    bottom:0;
-    left:0;
-    width:100%;
-    height:100%;
-    position:absolute;
-    display:block;
-    z-index:5;
-    background: $background;
-    @include transition-css(height,1s);
+  .logo-overlay {
+    opacity:0;
+    @include transition-css(opacity,1s);
   }
+  //.logo-overflow {
+  //  content:" ";
+  //  bottom:0;
+  //  left:0;
+  //  width:100%;
+  //  height:100%;
+  //  position:absolute;
+  //  display:block;
+  //  z-index:5;
+  //  background: $background;
+  //  @include transition-css(height,1s);
+  //}
   .logo-fix {
     z-index:10;
   }
@@ -87,11 +91,11 @@ h1,h2,h3,h4,h5,h6 {
     a {
       color:inherit;
       display:block;
-      opacity:0.6;
+      opacity:1;
       @include transition-linear-css(opacity,0.5s);
     }
     a:hover {
-      opacity:1;
+      opacity:0.8;
     }
     span {
       height: 75px;
@@ -165,9 +169,10 @@ h1,h2,h3,h4,h5,h6 {
     }
   }
   .arrow-next-project {
-    height:50px;
-    width:50px;
+    height:30px;
+    width:30px;
     background:url(/wp-content/themes/julieferrieux-2017/public/images/arrow.png) no-repeat center center;
+    background-size:100% auto;
     position:absolute;
     z-index:15;
     bottom:60px;
@@ -306,7 +311,7 @@ h1,h2,h3,h4,h5,h6 {
 .body-single .project-image {
 
   .image-preview {
-    max-width:$imgMaxWidth;
+    max-width:1365px;
     margin: 0 auto;
     width: auto;
     height: auto;
@@ -324,8 +329,8 @@ h1,h2,h3,h4,h5,h6 {
   height:auto;
   max-width:$imgMaxWidth;
   margin:auto;
-  left:20vh;
-  right:20vh;
+  left: 10vw;
+  right: 10vw;
   position:absolute;
   bottom:0;
   opacity:0;
@@ -364,7 +369,7 @@ h1,h2,h3,h4,h5,h6 {
       }
       h1,h2,h3,h4,h5,h6 {
         font-size:1.5rem;
-        margin-bottom:0.5rem;
+        margin-bottom:1rem;
         color:inherit;
 
 
@@ -534,7 +539,7 @@ h1,h2,h3,h4,h5,h6 {
     display:flex;
     flex-wrap: nowrap;
     .content-text {
-      min-width:50vw;
+      min-width:40vw;
       padding:0 150px;
       color:$red;
     }
@@ -543,6 +548,7 @@ h1,h2,h3,h4,h5,h6 {
     }
     p,h1,h2,h3,h4,h5,h6 {
       margin:20px 0;
+      font-size:2.5rem;
     }
     img {
       max-width:100%;
@@ -570,7 +576,7 @@ h1,h2,h3,h4,h5,h6 {
     margin:auto;
     height:115px;
     p {
-      font-size:13px;
+      font-size:11px;
       line-height:15px;
       font-weight:bold;
       opacity:1;
@@ -581,7 +587,7 @@ h1,h2,h3,h4,h5,h6 {
       font-size:100px;
       line-height:100px;
       letter-spacing:0px;
-      margin-bottom: 20px;
+      margin-bottom: 50px;
     }
   }
   .next-project-background {

@@ -34,7 +34,6 @@
         </svg>
 
         </div>
-        <div class="logo-overflow"></div>
         <div class="logo-overlay">
             <svg viewBox="0 0 1238 1238" ">
                 <g>

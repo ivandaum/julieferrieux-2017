@@ -15,7 +15,7 @@ class Home {
 		this.sections = document.querySelectorAll('.'+this.className.project);
 		this.preload(function() {
 			document.querySelector('.loader').style.opacity = 0;
-			document.querySelector('.logo-overflow').style.height = '100%';
+			document.querySelector('.logo-overlay').style.opacity = 0;
 
 			_this.flagSwitching = false;
 

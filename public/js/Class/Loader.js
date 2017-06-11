@@ -35,9 +35,7 @@ class Loader {
 			this.percentLoaded = percent;
 		}
 
-		var height = 130;
-		var pixels = height - (height *(this.percentLoaded/100));
-		document.querySelector('.logo-overflow').style.height = pixels + 'px';
+		document.querySelector('.logo-overlay').style.opacity = (this.percentLoaded/100);
 	}
 
 	getImg() {
