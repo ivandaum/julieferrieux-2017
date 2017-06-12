@@ -29,7 +29,7 @@ class Project {
 				var $background = document.querySelector('.next-project-background');
 				var color = $background.dataset.nextcolor;
 
-				new TweenMax.to($background,0.5,{backgroundColor:color,ease:Quart.easeInOut});
+				new TweenMax.to($background,0.5,{backgroundColor:color});
 				addClass($background,'show-next');
 			});
 
@@ -37,7 +37,7 @@ class Project {
 				var $background = document.querySelector('.next-project-background');
 				var color = $background.dataset.currentcolor;
 
-				new TweenMax.to($background,0.5,{backgroundColor:color,ease:Quart.easeInOut});
+				new TweenMax.to($background,0.5,{backgroundColor:color});
 				removeClass($background,'show-next');
 
 			});

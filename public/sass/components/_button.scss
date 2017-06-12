@@ -8,11 +8,11 @@
   letter-spacing:3px;
   font-weight: bold;
   &.nav-about {
-    right:100px;
+    right:10vw;
     width: 62px;
   }
   &.nav-projects {
-    left:100px;
+    left:10vw;
     width:61px;
     pointer-events: auto;
     @include transition-css();
