@@ -140,18 +140,24 @@ h1,h2,h3,h4,h5,h6 {
     bottom: 60px;
     z-index:20;
   }
-
-  .see-project {
-    right: 100px;
-    position: absolute;
-    text-transform: uppercase;
+  .see-project-container {
+    right:0;
     bottom: 60px;
+    position:absolute;
+    max-width:$imgMaxWidth;
+    margin:auto;
+    left:0;
+    height:50px;
+  }
+  .see-project {
+    text-transform: uppercase;
     color: inherit;
+    position:absolute;
+    right:-100px;
     font-size: 10px;
     line-height: 35px;
     letter-spacing:3.5px;
     font-weight:bold;
-
     &:after {
       @include transition-css(width,0.5s);
       content:" ";
@@ -311,14 +317,13 @@ h1,h2,h3,h4,h5,h6 {
 .body-single .project-image {
 
   .image-preview {
-    max-width:1365px;
+    max-width:$imgMaxWidth;
     margin: 0 auto;
     width: auto;
     height: auto;
     max-height: 65vh;
-    right: 10vw;
-    left: 10vw;
-    bottom: 0;
+    right:0;
+    left:0;
     top: 10vh;
   }
 }
@@ -447,6 +452,7 @@ h1,h2,h3,h4,h5,h6 {
     color: inherit;
   }
   .number {
+    margin-left:-50px;
     font-size:13px;
     line-height:20px;
     margin-bottom:25px;
@@ -487,7 +493,7 @@ h1,h2,h3,h4,h5,h6 {
     height:auto;
     width:auto;
     margin:auto;
-    padding:0 125px;
+    padding: 0 114px 0 128px;
     margin-bottom: 100px;
     &:after {
       content:" ";
@@ -617,7 +623,7 @@ h1,h2,h3,h4,h5,h6 {
   position:fixed;
   z-index:200;
   color:$white;
-  @include transition-css(right,1s);
+  @include transition-linear-css(right,0.5s);
 
   &.active {
     right:0;
@@ -691,7 +697,7 @@ h1,h2,h3,h4,h5,h6 {
     flex-wrap: wrap;
     width:100%;
     li {
-      width:25%;
+      width:33%;
       display:block;
     }
     li a {

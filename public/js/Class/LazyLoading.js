@@ -2,7 +2,7 @@ class LazyLoading {
 	constructor(container) {
 		this.container = container;
 		this.img = document.querySelectorAll(container + ' img');
-		this.offsetTop = window.innerHeight/2;
+		this.offsetTop = window.innerHeight - (window.innerHeight/2);
 
 		if(window.innerWidth > 1000) {
 			this.bind()
@@ -17,9 +17,15 @@ class LazyLoading {
 			img.style.opacity = 0;
 		}
 
-		document.addEventListener('mousewheel', function(e) {
+		window.addEventListener('scroll',function() {
 			_this.fadeImg();
 		});
+		// document.addEventListener('mousewheel', function(e) {
+		// 	_this.fadeImg();
+		// });
+		// document.addEventListener('wheel', function(e) {
+		// 	_this.fadeImg();
+		// });
 	}
 
 	fadeImg() {

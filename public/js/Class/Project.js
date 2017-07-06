@@ -6,7 +6,7 @@ class Project {
 		document.querySelector('.loader').style.opacity = 0;
 		document.querySelector('.logo-overlay').style.opacity = 0;
 
-		new LazyLoading('.single-content');
+		// new LazyLoading('.single-content');
 
 		new TweenMax.staggerFromTo('h1 span',1,
 			{paddingTop:'100px',ease:Quart.easeInOut},

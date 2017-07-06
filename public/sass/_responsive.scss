@@ -3,47 +3,91 @@
     .content-text {
       padding: 0 250px;
     }
-    p,h1,h2,h3,h4,h5,h6 {
+    p, h1, h2, h3, h4, h5, h6 {
       font-size: 5.5rem;
       line-height: 6rem;
     }
   }
+
 }
+
 @include breakpoint($very-large-desktop) {
   .single .title {
-    left:50px;
-    h1,span {
-      margin-left:0;
+    left: 50px;
+    h1, span, .number {
+      margin-left: 0;
     }
   }
   .nav-button {
     &.nav-about {
-      right: 5vw;
+      right: 25px;
     }
     &.nav-projects {
-      left: 5vw;
+      left: 25px;
     }
   }
+  .project .see-project {
+    right:25px;
+  }
 }
+
+@include breakpoint($medium-large-desktop) {
+  .navigation {
+    left:50px;
+    right:50px;
+  }
+  .nav-button {
+    &.nav-about {
+      right: 0;
+    }
+    &.nav-projects {
+      left: 0;
+    }
+  }
+  .project .see-project {
+    right:0;
+  }
+  .project .see-project-container {
+    left:50px;
+    right:50px;
+  }
+  .single .image-preview {
+    right: 10vw !important;
+    left: 10vw !important;
+  }
+  .single .content-image {
+    padding: 0 125px;
+  }
+}
+
 @include breakpoint($large-desktop) {
   .single .single-content .content-full {
-    p,h1,h2,h3,h4,h5,h6 {
+    p, h1, h2, h3, h4, h5, h6 {
       font-size: 1.5rem;
       line-height: 2rem;
     }
   }
-
+  .nav-button {
+    &.nav-about {
+      right: 0;
+    }
+    &.nav-projects {
+      left: 0;
+    }
+  }
 }
+
 @include breakpoint($large-md-desktop) {
   .single .single-content .content-full .content-text {
-    min-width:50vw;
-    padding:0 10vw;
+    min-width: 50vw;
+    padding: 0 10vw;
   }
 
 }
+
 @include breakpoint($small-desktop) {
   .single .single-content .content-full {
-    p,h1,h2,h3,h4,h5,h6 {
+    p, h1, h2, h3, h4, h5, h6 {
       font-size: 1rem;
       line-height: 1.5rem;
     }
@@ -54,50 +98,54 @@
   .logo {
     height: 100px;
     width: 100px;
+    top: 20px;
+    left: 20px;
+  }
+  .navigation {
     top:20px;
-    left:20px;
+    width:90%;
+    left:0;
+    right:0;
   }
   .nav-button.nav-about {
-    top:20px;
-    right:20px;
+    right: 0;
   }
   .nav-button.nav-projects {
-    top:20px;
-    left:20px;
+    left: 0;
   }
   .projects-menu {
-    left:50px;
+    left: 50px;
   }
   .project .project-content {
-    left:80px;
+    left: 80px;
   }
   .project h2 {
-    font-size:45px;
+    font-size: 45px;
     line-height: 45px;
   }
   .project .see-project {
-    display:none;
+    display: none;
   }
   .project .project-tags p {
-    font-size:10px;
-    letter-spacing:2px;
+    font-size: 10px;
+    letter-spacing: 2px;
   }
   .project h2 span {
-    height:45px;
+    height: 45px;
   }
 
   .single .title {
     font-size: 50px;
     line-height: 50px;
-    left:0;
+    left: 0;
     width: 90%;
     height: auto;
     position: relative;
-    margin:auto;
+    margin: auto;
     padding-top: 100px;
   }
   .single .title span {
-    line-height:50px;
+    line-height: 50px;
     height: 50px;
   }
   .single .project-intro {
@@ -119,7 +167,7 @@
     margin: 15px auto;
     width: 90%;
     p {
-      letter-spacing:1px;
+      letter-spacing: 1px;
     }
   }
   .single .project-intro .project-intro-details {
@@ -128,57 +176,57 @@
     margin: auto;
     flex-wrap: wrap;
   }
-  .single .project-intro .project-intro-details>div {
-    display:block;
+  .single .project-intro .project-intro-details > div {
+    display: block;
     margin-bottom: 20px;
-    min-width:50%;
+    min-width: 50%;
     span {
-      margin-bottom:5px;
+      margin-bottom: 5px;
     }
     &:last-child {
-      max-width:100%;
+      max-width: 100%;
     }
-    h1,h2,h3,h4,h5,h6 {
-      line-height:1.2rem;
-      font-size:1rem;
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1.2rem;
+      font-size: 1rem;
     }
   }
   .single .project-intro .scroll-info {
-    display:none;
+    display: none;
   }
   .single .single-content .content-image {
     width: 90%;
     margin: 15px auto;
-    padding:0;
+    padding: 0;
   }
   .single .single-content .slider .content-image {
     width: 90%;
     margin: 15px auto;
-    padding:0;
+    padding: 0;
   }
   .single .single-content .slider .flickity-page-dots {
     margin-top: -10px;
   }
   .single .single-content .content-full {
-    display:block;
+    display: block;
   }
   .single .single-content .content-full .content-text {
-    padding:0;
-    display:block;
-    width:90%;
-    max-width:90%;
-    margin:auto;
-    h1,h2,h3,h4,h5,h6 {
-      font-size:15px;
-      line-height:15px;
+    padding: 0;
+    display: block;
+    width: 90%;
+    max-width: 90%;
+    margin: auto;
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 15px;
+      line-height: 15px;
     }
   }
   .single .next-project a .next-project-title {
-    font-size:50px;
-    line-height:50px;
+    font-size: 50px;
+    line-height: 50px;
   }
   .body-single .project-image {
-    height:70vh;
+    height: 70vh;
   }
   .body-single .project-image .image-preview {
     right: 50px;
@@ -187,35 +235,35 @@
     top: 50px;
   }
   .contact .contact-content {
-    padding-top:15vh;
+    padding-top: 15vh;
     width: 80%;
   }
   .contact h3 {
-    font-size:35px;
+    font-size: 35px;
   }
   .project .arrow-next-project {
-    right:40px;
-    left:auto;
-    opacity:1;
-    height:20px;
-    width:20px;
-    background-size:100% auto;
-    margin:0;
+    right: 40px;
+    left: auto;
+    opacity: 1;
+    height: 20px;
+    width: 20px;
+    background-size: 100% auto;
+    margin: 0;
   }
 }
 
 @include breakpoint($phone-small) {
 
   .projects-menu {
-    left:20px;
+    left: 20px;
     .project-number {
-      display:none !important;
+      display: none !important;
     }
   }
   .project .project-content {
-    left:50px;
+    left: 50px;
   }
   .project h2 a {
-    opacity:1;
+    opacity: 1;
   }
 }

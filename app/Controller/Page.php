@@ -78,12 +78,12 @@ class Page extends Controller {
 	    $about = get_page_by_path('a-propos');
 
 	    $page = [
-	    	'title' => 'À propos',
+	    	'title' => $about->post_title,
 	    	'content' => apply_filters('the_content', $about->post_content),
 	        'email' => get_field('email',$about->ID),
 	        'networks' => [
 		        'pinterest' => get_field('pinterest',$about->ID),
-		        'instagram' => get_field('instagram',$about->ID),
+//		        'instagram' => get_field('instagram',$about->ID),
 		        'behance' => get_field('behance',$about->ID),
 		        'linkedin' => get_field('linkedin',$about->ID)
 	        ]

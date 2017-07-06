@@ -1,6 +1,10 @@
 class Binder {
 	constructor() {
-
+		window.onpopstate = function(e) {
+			e.preventDefault();
+			var url = window.location.href;
+			window.location = url;
+		};
 	}
 	menu() {
 		this.link('.navigation .ajax-link')
@@ -45,7 +49,6 @@ class Binder {
 					} else {
 						window.location.href = l;
 					}
-
 					window.history.pushState({}," ",l)
 				});
 			});

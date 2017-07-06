@@ -35,7 +35,7 @@ class Home {
 			})
 		}
 
-		document.querySelector('.navigation .logo').addEventListener('click',function() {
+		document.querySelector('.logo').addEventListener('click',function() {
 			if(_this.activeSection != 0) {
 				_this.jumpToSection(1);
 			}
